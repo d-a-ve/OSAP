@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   Flex,
+  Heading,
   Text,
   VStack,
 } from "@chakra-ui/react"
@@ -55,9 +56,12 @@ export default function LeftPanel() {
             py="16px"
             w="100%"
           >
-            <Text fontWeight="bold" fontSize="lg">
+            <Heading
+              fontWeight="bold"
+              fontSize="lg"
+            >
               Username
-            </Text>
+            </Heading>
             <Text
               fontWeight="semibold"
               fontSize="sm"
