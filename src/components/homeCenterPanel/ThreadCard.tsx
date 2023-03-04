@@ -13,7 +13,9 @@ export default function ThreadCard() {
       rounded="0px"
       direction="row"
       variant="outline"
-      borderBottom="3px"
+      border="0px"
+      borderTop="1px"
+      borderColor="gray.100"
       _hover={{ background: "gray.50" }}
     >
       <Box pt="16px" pl="8px">

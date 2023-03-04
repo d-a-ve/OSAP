@@ -29,10 +29,9 @@ export default function LeftPanel() {
 
   return (
     <Box
-      flex="1"
+      w="20%"
       py="16px"
-      borderRight="1px"
-      borderColor="gray.300"
+      pos="fixed"
       height="100vh"
     >
       <VStack spacing="16px" pb="8px">
