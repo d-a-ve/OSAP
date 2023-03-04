@@ -10,8 +10,8 @@ import PopularThreadsSection from "./PopularThreadSection"
 export default function CenterPanel() {
   return (
     <Box
-    ml="20%"
-      flex="2"
+      ml="20%"
+      flex={2}
       overflow="auto"
       border="1px"
       borderColor="gray.100"
