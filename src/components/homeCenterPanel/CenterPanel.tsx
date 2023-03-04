@@ -1,7 +1,7 @@
 import {
   Box,
   Stack,
-  Text
+  Text,
 } from "@chakra-ui/react"
 import ThreadCard from "./ThreadCard"
 import CreateThread from "./CreateThread"
