@@ -14,6 +14,8 @@ dist-ssr
 pnpm-lock.yaml
 vite.env.d.ts
 vite.config.ts
+.gitpod.yml
+package-lock.json
 
 # Editor directories and files
 .vscode/*
