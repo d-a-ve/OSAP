@@ -21,19 +21,7 @@ export default function ContributorSectionLayout({
       >
         {title}
       </Heading>
-      <Stack
-        spacing={0}
-        overflowY="auto"
-        h="400px"
-        sx={{
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
-          "&::-moz-scrollbar": {
-            display: "none",
-          },
-        }}
-      >
+      <Stack spacing={0} pb={8}>
         {children}
       </Stack>
     </Box>

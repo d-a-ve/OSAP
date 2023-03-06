@@ -17,14 +17,15 @@ export default function ThreadCard() {
       borderTop="1px"
       borderColor="gray.100"
       _hover={{ background: "gray.50" }}
+      px={12}
     >
       <Box pt="16px" pl="8px">
         {/* use Avatar component  */}
         <Box
           bg="gray.400"
           rounded="full"
-          height="70px"
-          width="70px"
+          height="50px"
+          width="50px"
         />
       </Box>
       <CardBody>

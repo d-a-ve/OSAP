@@ -6,28 +6,52 @@ import {
 import ThreadDetail from "./ThreadDetail"
 
 export default function PopularThreadsSection() {
+  const count = [1, 2, 3, 4]
   return (
-    <Box borderY="1px" borderColor="gray.100">
+    <Box borderY="1px" borderColor="gray.100"
+
+    >
       <Heading
-        size="lg"
-        borderBottom="1px"
-        p="16px"
-        borderColor="gray.100"
+        size="md"
+        px={12}
+        py="16px"
+        borderBottom="1px solid whitesmoke"
       >
         Popular/Trending Challenges
       </Heading>
       <Grid
         p="16px"
-        pl="32px"
+        pl={12}
         width="100%"
         overflowX="scroll"
-        gap="8px"
+        gridGap="15px"
         autoFlow="column"
+        // Make scrollbar invisible
+        sx={{
+          "&::-webkit-scrollbar": {
+            width: "0px",
+          },
+          "&::-webkit-scrollbar-track": {
+            backgroundColor: "white",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: "white",
+            borderRadius: "ƒ0px",
+          },
+        }}
       >
-        <ThreadDetail width="300px" />
-        <ThreadDetail width="300px" />
-        <ThreadDetail width="300px" />
-        <ThreadDetail width="300px" />
+        {count.map((x) => (
+          <Box pl={4} key={x}
+            py={6}
+            bg={"white"}
+            shadow={"lg"}
+          >
+            <ThreadDetail width="300px" />
+
+          </Box>
+        ))}
+
+
       </Grid>
     </Box>
   )

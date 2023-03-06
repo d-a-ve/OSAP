@@ -5,6 +5,8 @@ import {
 } from "@chakra-ui/react"
 import TopContributorSection from "./TopContributorSection"
 import FollowContributorSection from "./FollowContributorSection"
+import RightPanelBody from "./RightPanelBody"
+import RightPanelHeader from "./RightPanelHeader"
 
 export default function RightPanel({
   isConnected,
@@ -16,24 +18,21 @@ export default function RightPanel({
   connect: () => Promise<void>
 }) {
   return (
-    <Box py="8px" w="25%" maxH="100%">
-      <Center py="8px">
-        <Button
-          bg="green.300"
-          fontSize="xl"
-          py="8px"
-          fontWeight="semibold"
-          color="white"
-          w="70%"
-          onClick={
-            isConnected ? disconnect : connect
-          }
-        >
-          {isConnected ? "Disconnect" : "Connect"}
-        </Button>
-      </Center>
-      <TopContributorSection />
-      <FollowContributorSection />
+    <Box
+      py="8px"
+      w="25%"
+      maxH="100%"
+      h="100vh"
+      position={"fixed"}
+      right={0}
+    >
+      <RightPanelHeader
+        isConnected={isConnected}
+        disconnect={disconnect}
+        connect={connect}
+      />
+
+      <RightPanelBody />
     </Box>
   )
 }
