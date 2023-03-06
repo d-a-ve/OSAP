@@ -4,12 +4,7 @@ import FollowContributorCard from "./FollowContributorCard"
 export default function FollowContributorSection() {
   return (
     <ContributorSectionLayout title="Contributors To Follow">
-      <FollowContributorCard />
-      <FollowContributorCard />
-      <FollowContributorCard />
-      <FollowContributorCard />
-      <FollowContributorCard />
-      <FollowContributorCard />
+      {/* To maintain UI aesthetics, only two followers should be suggested at a time */}
       <FollowContributorCard />
       <FollowContributorCard />
     </ContributorSectionLayout>

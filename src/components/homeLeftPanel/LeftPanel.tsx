@@ -19,7 +19,7 @@ export default function LeftPanel({
   const appOptionsData = [
     "Settings",
     "View Source Code",
-    "Github",
+    "Discord",
   ]
 
   const mappedAppOptions = appOptionsData.map(
@@ -42,51 +42,55 @@ export default function LeftPanel({
     >
       <VStack spacing="16px" pb="8px">
         // user profile card
-        {isConnected && (
+
+        <Flex
+          flexDirection="column"
+          alignItems="center"
+          pt="32px"
+          w="100%"
+        >
+          <Box
+            bg="yellow"
+            w="150px"
+            h="150px"
+            rounded="full"
+          />
           <Flex
-            flexDirection="column"
             alignItems="center"
-            pt="32px"
+            direction="column"
+            gap="4px"
+            py="16px"
             w="100%"
           >
-            <Box
-              bg="yellow"
-              w="150px"
-              h="150px"
-              rounded="full"
-            />
-            <Flex
-              alignItems="center"
-              direction="column"
-              gap="4px"
-              py="16px"
-              w="100%"
+            <Heading
+              fontWeight="bold"
+              fontSize="lg"
             >
-              <Heading
-                fontWeight="bold"
-                fontSize="lg"
-              >
-                Username
-              </Heading>
-              <Text
-                fontWeight="semibold"
-                fontSize="sm"
-                fontStyle="italic"
-              >
-                #{signerAddress}
-              </Text>
-              <Button
-                bg="green.300"
-                textColor="white"
-                fontSize="xl"
-                w="60%"
-                mt="8px"
-              >
-                View Profile
-              </Button>
-            </Flex>
+              Username
+            </Heading>
+            <Text
+              fontWeight="semibold"
+              fontSize="sm"
+              fontStyle="italic"
+            >
+              {isConnected ? signerAddress : "not connected"}
+            </Text>
+            <Button
+              bg={isConnected ? "green.300" : "gray"}
+              _hover={{
+                backgroundColor: isConnected ? "green.300" : "gray"
+              }}
+            color={isConnected ? "white" : "gray.400"}
+              fontSize="xl"
+              w="60%"
+              mt="8px"
+              disabled={isConnected ? false : true}
+            >
+              NEW POST
+            </Button>
           </Flex>
-        )}
+        </Flex>
+
         <Divider />
         <Box w="100%" px="32px" pt="8px">
           {mappedAppOptions}
