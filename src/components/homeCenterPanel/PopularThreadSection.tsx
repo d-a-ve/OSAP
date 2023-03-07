@@ -41,17 +41,17 @@ export default function PopularThreadsSection() {
         }}
       >
         {count.map((x) => (
-          <Box pl={4} key={x}
+          <Box
+            pl={4}
+            key={x}
+
             py={6}
             bg={"white"}
             shadow={"lg"}
           >
             <ThreadDetail width="300px" />
-
           </Box>
         ))}
-
-
       </Grid>
     </Box>
   )

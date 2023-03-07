@@ -3,10 +3,23 @@ import {
   Card,
   CardBody,
   Stack,
+  useBreakpointValue,
 } from "@chakra-ui/react"
 import ThreadDetail from "./ThreadDetail"
 
 export default function ThreadCard() {
+  const smVariant = {
+    navigation: "drawer",
+    navigationButton: true,
+  }
+  const mdVariant = {
+    navigation: "sidebar",
+    navigationButton: false,
+  }
+  const variants: any = useBreakpointValue({
+    base: smVariant,
+    md: mdVariant,
+  })
   return (
     // check the card example on the chakra ui website for a complete sample
     <Card
@@ -17,7 +30,7 @@ export default function ThreadCard() {
       borderTop="1px"
       borderColor="gray.100"
       _hover={{ background: "gray.50" }}
-      px={12}
+      px={!variants?.navigationButton ? 12 : 4}
     >
       <Box pt="16px" pl="8px">
         {/* use Avatar component  */}

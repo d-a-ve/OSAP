@@ -23,20 +23,18 @@ export default function ThreadDetail({
 
 
       <Text pt="4px">
-
         {shortendContent}
         {/* if width is 300px then it is displayed on the popular trends */}
-        {
-          width !== "300px" && (
-            <span
-              style={{
-                color: "blue",
-                fontSize: "12px"
-              }}
-            >Read more</span>
-          )
-        }
-
+        {width !== "300px" && (
+          <span
+            style={{
+              color: "blue",
+              fontSize: "12px",
+            }}
+          >
+            Read more
+          </span>
+        )}
       </Text>
     </Box>
   )

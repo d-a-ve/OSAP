@@ -5,9 +5,12 @@ export default function TopContributorSection() {
   const scores = [1, 2, 3, 4]
 
   return (
-    <ContributorSectionLayout title="Top Contributors Scoreboard">
+    <ContributorSectionLayout
+      title={"Top Contributors Scoreboard"}
+    >
       {scores.map((x, i) => (
-        <TopContributorCard key={x}
+        <TopContributorCard
+          key={x}
           myScore={i === 3 ? true : null}
         />
       ))}
