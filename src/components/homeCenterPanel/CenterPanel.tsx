@@ -2,9 +2,10 @@ import {
   Box,
   useBreakpointValue,
 } from "@chakra-ui/react"
+
 import HomeCenterPanelheader from "./HomeCenterPanelHeader"
 import HomeCenterPanelBody from "./HomeCenterPanelBody"
-import FloatingButton from "./floatingActionButton"
+
 
 export default function CenterPanel() {
   const smVariant = {

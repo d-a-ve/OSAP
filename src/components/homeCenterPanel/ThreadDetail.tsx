@@ -21,6 +21,7 @@ export default function ThreadDetail({
     <Box w={width}>
       <Heading size="sm">Segun Adebayo</Heading>
 
+
       <Text pt="4px">
         {shortendContent}
         {/* if width is 300px then it is displayed on the popular trends */}

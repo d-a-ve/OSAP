@@ -47,7 +47,6 @@ export default function RightPanel() {
         bg="white"
       >
         <RightPanelHeader />
-
         <RightPanelBody />
       </Box>
     </Box>

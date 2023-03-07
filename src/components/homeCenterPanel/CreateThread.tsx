@@ -17,6 +17,7 @@ import { RiImageAddFill, RiVideoAddFill } from "react-icons/ri"
 export default function CreateThread() {
   return (
     <Card rounded="0px" direction="row" px={12}>
+
       <Box pt="16px" pl="8px">
         {/* use Avatar component  */}
         <Box
