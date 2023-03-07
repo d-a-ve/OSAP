@@ -1,4 +1,9 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+} from "@chakra-ui/react"
 
 export default function AppOptionCard({
   title,
@@ -12,9 +17,7 @@ export default function AppOptionCard({
       fontWeight="semibold"
       mb="8px"
     >
-      <Box>
-        {/* <Text>Icon</Text> */}
-      </Box>
+      <Box>{/* <Text>Icon</Text> */}</Box>
       <Button bg="whitesmoke" w="100%">
         <Text>{title}</Text>
       </Button>

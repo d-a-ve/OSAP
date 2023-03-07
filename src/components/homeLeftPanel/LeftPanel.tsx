@@ -1,21 +1,41 @@
 import {
+  Avatar,
   Box,
-  Button,
   Divider,
   Flex,
-  Heading,
-  Text,
+  useBreakpointValue,
   VStack,
 } from "@chakra-ui/react"
+import { SettingsIcon } from "@chakra-ui/icons"
+import { RiGithubFill } from "react-icons/ri"
 import AppOptionCard from "./AppOptionCard"
+import LeftPanelBody from "./leftPanelBody"
 
-export default function LeftPanel({
-  isConnected,
-  signerAddress,
-}: {
-  isConnected: boolean | undefined
-  signerAddress: string | undefined
-}) {
+const icons = [
+  {
+    name: "settings",
+    icon: <SettingsIcon />,
+  },
+  {
+    name: "github",
+    icon: <RiGithubFill />,
+  },
+]
+
+export default function LeftPanel() {
+  const smVariant = {
+    navigation: "drawer",
+    navigationButton: true,
+  }
+  const mdVariant = {
+    navigation: "sidebar",
+    navigationButton: false,
+  }
+  const variants: any = useBreakpointValue({
+    base: smVariant,
+    md: mdVariant,
+  })
+
   const appOptionsData = [
     "Settings",
     "View Source Code",
@@ -39,63 +59,48 @@ export default function LeftPanel({
       py="16px"
       pos="fixed"
       height="100vh"
+      bg="white"
+      borderRight={"solid 1px gray"}
+      zIndex={"tooltip"}
     >
-      <VStack spacing="16px" pb="8px">
-        // user profile card
+      {!variants?.navigationButton && (
+        <LeftPanelBody
+          mappedAppOptions={mappedAppOptions}
+        />
+      )}
 
-        <Flex
-          flexDirection="column"
-          alignItems="center"
-          pt="32px"
-          w="100%"
-        >
-          <Box
-            bg="yellow"
-            w="150px"
-            h="150px"
-            rounded="full"
-          />
-          <Flex
-            alignItems="center"
-            direction="column"
-            gap="4px"
-            py="16px"
-            w="100%"
-          >
-            <Heading
-              fontWeight="bold"
-              fontSize="lg"
+      {variants?.navigationButton && (
+        <VStack spacing="16px" pb="8px">
+          <>
+            <Flex
+              flexDirection="column"
+              alignItems="center"
+              pt="32px"
+              w="100%"
             >
-              Username
-            </Heading>
-            <Text
-              fontWeight="semibold"
-              fontSize="sm"
-              fontStyle="italic"
-            >
-              {isConnected ? signerAddress : "not connected"}
-            </Text>
-            <Button
-              bg={isConnected ? "green.300" : "gray"}
-              _hover={{
-                backgroundColor: isConnected ? "green.300" : "gray"
-              }}
-            color={isConnected ? "white" : "gray.400"}
-              fontSize="xl"
-              w="60%"
-              mt="8px"
-              disabled={isConnected ? false : true}
-            >
-              NEW POST
-            </Button>
-          </Flex>
-        </Flex>
+              <Box
+                bg="yellow"
+                w="50px"
+                h="50px"
+                rounded="full"
+              />
+            </Flex>
+            <Divider />
 
-        <Divider />
-        <Box w="100%" px="32px" pt="8px">
-          {mappedAppOptions}
-        </Box>
-      </VStack>
+            {icons.map((x) => (
+              <VStack spacing={8} key={x.name}>
+                <Avatar
+                  w="50px"
+                  h="50px"
+                  bg="gray"
+                  color={"white"}
+                  icon={x.icon}
+                />
+              </VStack>
+            ))}
+          </>
+        </VStack>
+      )}
     </Box>
   )
 }

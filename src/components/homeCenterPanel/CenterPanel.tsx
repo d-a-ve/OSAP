@@ -1,19 +1,32 @@
 import {
   Box,
-  Stack,
-  Text,
+  useBreakpointValue,
 } from "@chakra-ui/react"
-import ThreadCard from "./ThreadCard"
-import CreateThread from "./CreateThread"
-import PopularThreadsSection from "./PopularThreadSection"
 import HomeCenterPanelheader from "./HomeCenterPanelHeader"
 import HomeCenterPanelBody from "./HomeCenterPanelBody"
+import FloatingButton from "./floatingActionButton"
 
 export default function CenterPanel() {
+  const smVariant = {
+    navigation: "drawer",
+    navigationButton: true,
+  }
+  const mdVariant = {
+    navigation: "sidebar",
+    navigationButton: false,
+  }
+  const variants: any = useBreakpointValue({
+    base: smVariant,
+    md: mdVariant,
+  })
+
   return (
     <Box
-      ml="20%"
+      ml={
+        !variants?.navigationButton ? "20%" : "5%"
+      }
       mr={["0", "0", "25%"]}
+      w="100%"
       flex={2}
       overflow="auto"
       border="1px"
@@ -36,12 +49,18 @@ export default function CenterPanel() {
         scrollbarWidth: "thin",
       }}
     >
+      <HomeCenterPanelheader
+        showSidebarButton={
+          variants?.navigationButton
+        }
+      />
 
-      <HomeCenterPanelheader />
-
-      <HomeCenterPanelBody />
-
-
+      <HomeCenterPanelBody
+        showSidebarButton={
+          variants?.navigationButton
+        }
+      />
+      <FloatingButton />
     </Box>
   )
 }

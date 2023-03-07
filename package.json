@@ -10,22 +10,28 @@
     "format": "npx prettier --write \"src/{components, hooks, types, utils, styles}/**/*.{ts,tsx,js,jsx}\""
   },
   "dependencies": {
+    "@apollo/client": "^3.7.10",
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@ethersproject/providers": "^5.7.2",
+    "axios": "^1.3.4",
+    "date-fns": "^2.29.3",
     "ethers": "^6.0.8",
     "framer-motion": "^10.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router": "^6.8.2",
-    "web3": "^1.8.2"
+    "web3": "^1.8.2",
+    "zen-observable": "^0.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "dotenv": "^16.0.3",
     "prettier": "2.8.4",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
