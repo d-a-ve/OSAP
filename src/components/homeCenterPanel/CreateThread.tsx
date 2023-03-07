@@ -1,3 +1,4 @@
+import { LinkIcon } from "@chakra-ui/icons"
 import {
   Box,
   Text,
@@ -6,7 +7,12 @@ import {
   Textarea,
   Flex,
   Button,
+  HStack,
 } from "@chakra-ui/react"
+import { RiImageAddFill, RiVideoAddFill } from "react-icons/ri"
+
+
+
 
 export default function CreateThread() {
   return (
@@ -36,7 +42,12 @@ export default function CreateThread() {
             mt="8px"
             px="8px"
           >
-            <Text>Video Icon</Text>
+            <HStack spacing={5} color="green" alignItems="center" fontSize={"xl"}>
+              <LinkIcon />
+              <RiImageAddFill />
+              <RiVideoAddFill />
+            </HStack>
+
             <Button
               bg="green.300"
               textColor="white"

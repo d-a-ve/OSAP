@@ -16,6 +16,12 @@ export default function LeftPanelBody(prop: {
   const { address, connectWallet }: any =
     useContext(GlobalContext)
 
+
+  const formatted =
+    address ?
+      address.slice(0, 6) + "..." + address.slice(address.length, 2)
+      : "not connected";
+
   return (
     <>
       <VStack spacing="16px" pb="8px">
@@ -49,9 +55,7 @@ export default function LeftPanelBody(prop: {
               fontSize="sm"
               fontStyle="italic"
             >
-              {address
-                ? address
-                : "not connected"}
+              {formatted}
             </Text>
             <Button
               bg={address ? "green.300" : "gray"}
