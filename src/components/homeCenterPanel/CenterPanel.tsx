@@ -5,6 +5,7 @@ import {
 
 import HomeCenterPanelheader from "./HomeCenterPanelHeader"
 import HomeCenterPanelBody from "./HomeCenterPanelBody"
+import FloatingButton from "./floatingActionButton"
 
 
 export default function CenterPanel() {
