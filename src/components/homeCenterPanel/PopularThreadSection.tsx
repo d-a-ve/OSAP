@@ -3,6 +3,7 @@ import {
   Grid,
   Heading,
 } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 import ThreadDetail from "./ThreadDetail"
 
 export default function PopularThreadsSection() {
@@ -46,7 +47,9 @@ export default function PopularThreadsSection() {
             bg={"white"}
             shadow={"lg"}
           >
-            <ThreadDetail width="300px" />
+            <Link to="/thread">
+              <ThreadDetail width="300px" />
+            </Link>
           </Box>
         ))}
       </Grid>

@@ -35,13 +35,15 @@ export default function TCenterPanelHeader({
       ref={buttonBoxRef}
       justify="space-between"
     >
-      <Button
-        bg="green.300"
-        leftIcon={<BiArrowBack />}
-        color="white"
-      >
-        <Link to="..">Back</Link>
-      </Button>
+      <Link to="..">
+        <Button
+          bg="green.300"
+          leftIcon={<BiArrowBack />}
+          color="white"
+        >
+          Back
+        </Button>
+      </Link>
       {showSidebarButton && <SideBarButton />}
     </Flex>
   )
