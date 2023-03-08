@@ -1,5 +1,23 @@
 import React from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import ErrorPage from "./pages/Error";
 import Home from "./pages/Home";
+import Thread from "./pages/Thread";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home/>,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/thread",
+    element: <Thread/>,
+  },
+]);
 
 function App() {
   React.useEffect(() => {
@@ -10,7 +28,7 @@ function App() {
     });
   }, []);
   return (
-    <Home />
+    <RouterProvider router={router} />
   )
 }
 

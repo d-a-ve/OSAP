@@ -1,4 +1,3 @@
-
 import { ChevronRightIcon } from "@chakra-ui/icons"
 import {
   Box,
@@ -80,4 +79,3 @@ export default function HomeCenterPanelheader({
     </>
   )
 }
-

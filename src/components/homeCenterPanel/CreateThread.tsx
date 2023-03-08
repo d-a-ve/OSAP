@@ -9,15 +9,14 @@ import {
   Button,
   HStack,
 } from "@chakra-ui/react"
-import { RiImageAddFill, RiVideoAddFill } from "react-icons/ri"
-
-
-
+import {
+  RiImageAddFill,
+  RiVideoAddFill,
+} from "react-icons/ri"
 
 export default function CreateThread() {
   return (
     <Card rounded="0px" direction="row" px={12}>
-
       <Box pt="16px" pl="8px">
         {/* use Avatar component  */}
         <Box
@@ -43,7 +42,12 @@ export default function CreateThread() {
             mt="8px"
             px="8px"
           >
-            <HStack spacing={5} color="green" alignItems="center" fontSize={"xl"}>
+            <HStack
+              spacing={5}
+              color="green"
+              alignItems="center"
+              fontSize={"xl"}
+            >
               <LinkIcon />
               <RiImageAddFill />
               <RiVideoAddFill />

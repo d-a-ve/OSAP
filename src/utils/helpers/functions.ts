@@ -137,3 +137,32 @@ export const timeSince = (date: any) => {
 export const formatDate = (date: any) => {
   return format(new Date(date), "MMM d, yyyy");
 };
+
+export const formatDateTime = (date?:Date):string => {
+  const now = new Date();
+    const oneDay = 24 * 60 * 60 * 1000;
+    if(!date) {
+      return ""
+    }
+    
+    if (date.toDateString() === now.toDateString()) {
+      return "Today " + date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    } else if (date.getTime() === now.getTime() - oneDay) {
+      // this one isn't working.
+      return "Yesterday " + date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    } else {
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "2-digit",
+        hour: "numeric",
+        minute: "numeric"
+      });
+    }
+}
+
+export const sortMessagesByDate = (messages: any) => {
+  return messages.sort(
+    (a:any, b:any) => parseInt(a.dateCreated.toString()) - parseInt(b.dateCreated.toString())
+  );
+}
