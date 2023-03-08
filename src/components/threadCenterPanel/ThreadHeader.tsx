@@ -27,13 +27,18 @@ export default function ThreadHeader({
           bg="gray.300"
         />
         <Box>
-          <Heading size="md">
+          <Heading size={["sm", "sm", "md"]}>
             Segun Adebayo
           </Heading>
-          <Text>Created on Mar. 23</Text>
+          <Text fontSize={["xs", "xs", "md"]}>
+            Created on Mar. 23
+          </Text>
         </Box>
       </Flex>
-      <Heading mt={3} size={["md", "md", "lg"]}>
+      <Heading
+        mt={3}
+        size={["md", "md", "md", "lg"]}
+      >
         Lorem ipsum dolor sit amet consectetur,
         adipisicing elit. Quibusdam corrupti
         pariatur nam quia unde ullam vel

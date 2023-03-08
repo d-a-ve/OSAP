@@ -5,7 +5,6 @@ import {
   Input,
   InputRightElement,
   IconButton,
-  CardBody,
 } from "@chakra-ui/react"
 import { BiSend } from "react-icons/bi"
 
@@ -28,9 +27,9 @@ export default function MessageInput({
     <Box
       pos="fixed"
       bottom="20px"
-      right="25%"
-      left="20%"
-      px={4}
+      right={["0", "0", "25%"]}
+      left={["0", "0", "20%"]}
+      px={[2, 2, 4]}
       ref={boxRef}
     >
       <InputGroup size="lg">
@@ -43,12 +42,11 @@ export default function MessageInput({
         />
         <InputRightElement>
           <IconButton
-          bg="green.300"
-          color="white"
-            // px={5}
+            bg="green.300"
+            color="white"
             aria-label="Send Message"
             fontSize="2xl"
-            icon={<BiSend/>}
+            icon={<BiSend />}
             size="lg"
             onClick={sendMessage}
           />

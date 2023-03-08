@@ -1,11 +1,8 @@
-import { ChevronRightIcon } from "@chakra-ui/icons"
 import {
   Box,
-  IconButton,
   useBreakpointValue,
 } from "@chakra-ui/react"
-import { useContext } from "react"
-import { GlobalContext } from "../../contexts/global"
+import SideBarButton from "./SideBarButton"
 
 interface Props {
   showSidebarButton?: boolean
@@ -14,11 +11,6 @@ interface Props {
 export default function HomeCenterPanelheader({
   showSidebarButton = true,
 }: Props) {
-  const { isSidebarOpen, setSidebarOpen }: any =
-    useContext(GlobalContext)
-  const toggleSidebar = () =>
-    setSidebarOpen(!isSidebarOpen)
-
   const smVariant = {
     navigation: "drawer",
     navigationButton: true,
@@ -63,17 +55,7 @@ export default function HomeCenterPanelheader({
         />
 
         <Box pr={8}>
-          {showSidebarButton && (
-            <IconButton
-              icon={
-                <ChevronRightIcon w={8} h={8} />
-              }
-              color="blackAlpha.800"
-              variant="outline"
-              onClick={toggleSidebar}
-              aria-label={""}
-            />
-          )}
+          {showSidebarButton && <SideBarButton />}
         </Box>
       </Box>
     </>

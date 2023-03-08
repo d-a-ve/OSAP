@@ -16,6 +16,8 @@ import OverviewPanel from "./OverviewPanel"
 import MessageInput from "./MessageInput"
 import { useMessage } from "../../hooks/useMessage"
 import { scrollBarStyle } from "../../styles/scrollbarStyle"
+import TCenterPanelHeader from "./TCenterPanelHeader"
+import ChatPanel from "./ChatPanel"
 
 export default function TCenterPanel() {
   const {
@@ -29,20 +31,6 @@ export default function TCenterPanel() {
     chatBottomPadding,
     messagesColumnRef,
   } = useMessage()
-
-  const messages = messagesData?.map(
-    (message, i) => {
-      return (
-        <OverviewChatCard
-          key={i}
-          dateCreated={message.dateCreated}
-          name={message.name}
-          message={message.message}
-          displayVote={false}
-        />
-      )
-    }
-  )
 
   const smVariant = {
     navigation: "drawer",
@@ -60,7 +48,7 @@ export default function TCenterPanel() {
   return (
     <Box
       ml={
-        !variants?.navigationButton ? "20%" : "5%"
+        !variants?.navigationButton ? "20%" : "0"
       }
       mr={["0", "0", "25%"]}
       w="100%"
@@ -69,15 +57,10 @@ export default function TCenterPanel() {
       border="1px"
       borderColor="gray.100"
     >
-      <Box pt={4} pl={4} ref={buttonBoxRef}>
-        <Button
-          bg="green.300"
-          leftIcon={<BiArrowBack />}
-          color="white"
-        >
-          <Link to="..">Back</Link>
-        </Button>
-      </Box>
+      <TCenterPanelHeader
+        buttonBoxRef={buttonBoxRef}
+      />
+
       <Tabs
         isFitted
         variant="enclosed"
@@ -97,19 +80,18 @@ export default function TCenterPanel() {
             <OverviewPanel />
           </TabPanel>
           <TabPanel p={0}>
-            <Stack
-              h={`calc(100vh - ${chatBottomPadding}px)`}
-              overflow="auto"
-              sx={scrollBarStyle}
-              ref={messagesColumnRef}
-            >
-              {messages}
-            </Stack>
-            <MessageInput
-              message={message}
+            <ChatPanel
               handleChange={handleChange}
+              message={message}
+              messagesData={messagesData}
+              messagesColumnRef={
+                messagesColumnRef
+              }
               sendMessage={sendMessage}
               boxRef={boxRef}
+              chatBottomPadding={
+                chatBottomPadding
+              }
             />
           </TabPanel>
         </TabPanels>

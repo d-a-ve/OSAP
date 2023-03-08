@@ -4,7 +4,7 @@ import {
   Text,
   Flex,
   Card,
-  IconButton,
+  useMediaQuery,
   CardBody,
 } from "@chakra-ui/react"
 import {
@@ -13,6 +13,9 @@ import {
 } from "react-icons/bi"
 import { formatDateTime } from "../../utils/helpers/functions"
 import ChatCardFooter from "./ChatCardFooter"
+import DownVote from "./DownVote"
+import OverviewVotes from "./OverviewVotes"
+import UpVote from "./UpVote"
 
 type ChatCardType = {
   name?: string
@@ -33,6 +36,10 @@ export default function OverviewChatCard({
   overview,
   dateCreated,
 }: ChatCardType) {
+  const [isMobile] = useMediaQuery(
+    "(min-width: 500px)"
+  )
+
   return (
     <Card
       pl={4}
@@ -43,36 +50,18 @@ export default function OverviewChatCard({
       bg="gray.50"
     >
       {displayVote && (
-        <Flex direction="column">
-          <IconButton
-            aria-label="Up Vote"
-            color="green.400"
-            icon={<BiUpvote />}
-            size="sm"
-            fontSize="2xl"
-            variant="unstyled"
-          />
-          <Text fontSize="2xl" ml={1}>
-            {votes}
-          </Text>
-          <IconButton
-            aria-label="Down Vote"
-            color="green.400"
-            icon={<BiDownvote />}
-            size="sm"
-            fontSize="2xl"
-            variant="unstyled"
-          />
-        </Flex>
+        <OverviewVotes votes={votes} />
       )}
 
       {/* // avatar here */}
-      <Box
-        w={overview ? "60px" : "40px"}
-        h={overview ? "60px" : "40px"}
-        rounded="full"
-        bg="gray.300"
-      />
+      {
+        <Box
+          w={overview ? "60px" : "40px"}
+          h={overview ? "60px" : "40px"}
+          rounded="full"
+          bg="gray.300"
+        />
+      }
 
       <CardBody mt="-20px" p={4}>
         <Flex gap={2}>
