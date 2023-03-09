@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
 
-    <Flex position={"fixed"} h="100vh">
+    <Flex position={"fixed"} w="100%" h="100vh">
       <LeftPanel
       />
       <CenterPanel

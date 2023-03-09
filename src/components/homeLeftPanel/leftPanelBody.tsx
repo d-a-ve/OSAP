@@ -13,6 +13,9 @@ import { GlobalContext } from "../../contexts/global"
 import { ModalContext } from "../../contexts/modal"
 import MintProfileBtn from "../Buttons/MintProfile"
 import SigninBtn from "../Buttons/SigninBtn"
+import LogoutBtn from "../Buttons/LogoutBtn"
+import { placeholderImage } from "@/utils/helpers/constants"
+import ProfileBtn from "../Buttons/ProfileBtn"
 
 export default function LeftPanelBody(prop: {
   mappedAppOptions: any
@@ -29,8 +32,6 @@ export default function LeftPanelBody(prop: {
     handleModal("signup", "")
   }
 
-  const placeholderImage =
-    "https://via.placeholder.com/150x150.png?text=Avatar "
   const formatted = address
     ? address.slice(0, 6) +
       "..." +
@@ -57,8 +58,18 @@ export default function LeftPanelBody(prop: {
                 : placeholderImage
             }
             bg="gray"
-            w="150px"
-            h="150px"
+            w={[
+              "80px",
+              "100px",
+              "120px",
+              "150px",
+            ]}
+            h={[
+              "80px",
+              "100px",
+              "120px",
+              "150px",
+            ]}
           />
           <Flex
             alignItems="center"
@@ -87,44 +98,29 @@ export default function LeftPanelBody(prop: {
             {!accessToken && <SigninBtn />}
 
             {accessToken && !primaryProfile && (
-              <Button
-                bg={"green.300"}
-                _hover={{
-                  backgroundColor: "green",
-                }}
-                color={"white"}
-                fontSize="xl"
-                w="60%"
-                mt="8px"
-                onClick={handleOnClick}
-                cursor={"pointer"}
-              >
-                Mint Profile
-              </Button>
+              <ProfileBtn
+                handleOnClick={handleOnClick}
+                text="Mint Profile"
+              />
             )}
 
             {accessToken && primaryProfile && (
-              <Button
-                bg={"green.300"}
-                _hover={{
-                  backgroundColor: "green",
-                }}
-                color={"white"}
-                fontSize="xl"
-                w="60%"
-                mt="8px"
-                cursor={"pointer"}
-                //   view profile dialog would appear here
-              >
-                View Profile
-              </Button>
+              <ProfileBtn text="View Profile" />
             )}
           </Flex>
         </Flex>
         <Divider />
-        <Box w="100%" px="32px" pt="8px">
+        <Flex
+          direction="column"
+          align="center"
+          w="100%"
+          pt="8px"
+        >
           {prop.mappedAppOptions}
-        </Box>
+          {accessToken && primaryProfile && (
+            <LogoutBtn />
+          )}
+        </Flex>
       </VStack>
     </>
   )

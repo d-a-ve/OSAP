@@ -79,10 +79,10 @@ export default function RightPanel() {
     >
       <DrawerOverlay>
         <DrawerContent bg={"white"}>
-          <DrawerHeader>
+          <DrawerHeader p={[2, 2, 8]}>
             <RightPanelHeader />
           </DrawerHeader>
-          <DrawerBody py={16}>
+          <DrawerBody py={[0, 0, 16]} p={0}>
             <RightPanelBody />
           </DrawerBody>
         </DrawerContent>

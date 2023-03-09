@@ -1,4 +1,7 @@
-import { ChevronRightIcon } from "@chakra-ui/icons"
+import {
+  ChevronRightIcon,
+  ChevronLeftIcon,
+} from "@chakra-ui/icons"
 import {
   Box,
   IconButton,
@@ -66,13 +69,21 @@ export default function HomeCenterPanelheader({
         justifyContent="space-between"
       >
         <Box display={"flex"} ml={4}>
-          <IconButton
-            bg="whitesmoke"
-            border="1px solid gray"
-            icon={<ChevronRightIcon />}
-            aria-label={""}
-            onClick={handleShift}
-          />
+          {variants?.navigationButton && (
+            <IconButton
+              bg="whitesmoke"
+              border="1px solid gray"
+              icon={
+                isMoved ? (
+                  <ChevronLeftIcon />
+                ) : (
+                  <ChevronRightIcon />
+                )
+              }
+              aria-label={""}
+              onClick={handleShift}
+            />
+          )}
           <Box
             ml={4}
             as="img"
