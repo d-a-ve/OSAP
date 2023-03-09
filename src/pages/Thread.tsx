@@ -1,18 +1,17 @@
 import { Flex } from "@chakra-ui/react";
-import CenterPanel from "../components/homeCenterPanel/CenterPanel";
 import LeftPanel from "../components/LeftPanel/LeftPanel";
 import RightPanel from "../components/homeRightPanel/RightPanel";
 import RightPanelHeader from "../components/homeRightPanel/RightPanelHeader"
 import RightPanelBody from "../components/homeRightPanel/RightPanelBody"
+import TCenterPanel from "../components/threadCenterPanel/TCenterPanel";
 
-export default function Home() {
+export default function Thread() {
   return (
-    <Flex position={"fixed"} h="100vh">
+    <Flex position={"fixed"} h="100vh" w="100%">
       <LeftPanel
       />
-      <CenterPanel
-      />
-      <RightPanel panelBody={<RightPanelBody/>} panelHeader={<RightPanelHeader/>} />
+      <TCenterPanel />
+      <RightPanel panelHeader={<RightPanelHeader/>} panelBody={<RightPanelBody />}/>
     </Flex>
 
   )
