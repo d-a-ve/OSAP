@@ -3,7 +3,6 @@ import {
   Button,
   useBreakpointValue,
 } from "@chakra-ui/react"
-import { Link } from "react-router-dom"
 import { BiArrowBack } from "react-icons/bi"
 import SideBarButton from "../homeCenterPanel/SideBarButton"
 
@@ -35,7 +34,7 @@ export default function TCenterPanelHeader({
       ref={buttonBoxRef}
       justify="space-between"
     >
-      <Link to="..">
+     
         <Button
           bg="green.300"
           leftIcon={<BiArrowBack />}
@@ -43,8 +42,7 @@ export default function TCenterPanelHeader({
         >
           Back
         </Button>
-      </Link>
-      {showSidebarButton && <SideBarButton />}
+   
     </Flex>
   )
 }

@@ -88,7 +88,7 @@ export default function CreateThread(
 
       handleModal("post", "Profile was created!")
     }
-  }, [postInput.content])
+  }, [postInput.content, handleModal])
 
   function handlePost() {
     handleModal("post", "Profile was created!")

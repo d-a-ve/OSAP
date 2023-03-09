@@ -3,7 +3,6 @@ import {
   useState,
   useContext,
 } from "react"
-import { Link } from "react-router-dom"
 
 import Avatar from "../../components/Avatar"
 import { GlobalContext } from "../../contexts/global"
@@ -51,11 +50,11 @@ const PrimaryProfileCard = ({
   return (
     <div className="profile-card w-full">
       <div className="profile-card-img center">
-        <Link to="/posts">
+     
           <div>
             <Avatar value={handle} size={80} />
           </div>
-        </Link>
+       
         {address && (
           <div className="profile-card-address flex flex-col">
             <div>{`${address.slice(

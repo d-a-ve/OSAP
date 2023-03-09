@@ -9,7 +9,6 @@ import {
   TabPanel,
   Stack,
 } from "@chakra-ui/react"
-import { Link } from "react-router-dom"
 import { BiArrowBack } from "react-icons/bi"
 import OverviewChatCard from "./OverviewChatCard"
 import OverviewPanel from "./OverviewPanel"

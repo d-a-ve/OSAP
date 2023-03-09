@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { ReactNode, createContext, useState, useEffect } from "react";
 import { BrowserProvider, ethers } from "ethers";
 import { CHAIN_ID } from "../utils/helpers/constants";
@@ -101,14 +102,14 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       }
 
     }
-  });
+  }, [accessToken]);
 
 
   useEffect(() => {
     if (!(address && accessToken)) return;
     let query: any;
 
-    const fetch = async () => {
+    const fetchProfile = async () => {
       try {
         /* Fetch primary profile */
         query = useCancellableQuery({
@@ -132,7 +133,7 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
         console.error(error);
       }
     };
-    fetch();
+    fetchProfile();
 
     return () => {
       query.cancel();

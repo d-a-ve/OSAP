@@ -68,13 +68,13 @@ export const ImageInput = () => {
         setimageURL(`https://ipfs.io/ipfs/${cid}`)
       }
     }
-  }, [get])
+  }, [get, setimageURL ])
 
   useEffect(() => {
     if (xx) {
       console.log(xx)
     }
-  }, [xx])
+  }, [xx, ])
 
   return (
     <Box display="flex" w="100%" h="100%">
