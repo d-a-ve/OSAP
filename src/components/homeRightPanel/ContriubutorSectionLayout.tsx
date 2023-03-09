@@ -15,17 +15,17 @@ export default function ContributorSectionLayout({
   return (
     <Box
       rounded="xl"
-      m="16px"
+      m={["8px", "8px","16px"]}
       bg="rgb(248 250 252, 0.7)"
     >
       <Heading
         size="md"
         textAlign="center"
-        py="16px"
+        py={["8px","8px", "16px"]}
       >
         {title}
       </Heading>
-      <Stack spacing={0} pb={8}>
+      <Stack spacing={0} pb={4}>
         {children}
       </Stack>
     </Box>

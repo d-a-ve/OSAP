@@ -20,7 +20,7 @@ export default function RightPanelHeader() {
 
   return (
     <>
-      <Center py="8px">
+      <Center p="8px">
         <Box
           w="100%"
           display={"flex"}
