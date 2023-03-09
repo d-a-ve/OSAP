@@ -9,15 +9,14 @@ import {
   TabPanel,
   Stack,
 } from "@chakra-ui/react"
-import { Link } from "react-router-dom"
 import { BiArrowBack } from "react-icons/bi"
 import OverviewChatCard from "./OverviewChatCard"
 import OverviewPanel from "./OverviewPanel"
 import MessageInput from "./MessageInput"
-import { useMessage } from "../../hooks/useMessage"
-import { scrollBarStyle } from "../../styles/scrollbarStyle"
+// import { scrollBarStyle } from "../../styles/scrollbarStyle"
 import TCenterPanelHeader from "./TCenterPanelHeader"
 import ChatPanel from "./ChatPanel"
+import { useMessage } from "@/hooks/useMessage"
 
 export default function TCenterPanel() {
   const {
@@ -75,7 +74,7 @@ export default function TCenterPanel() {
           <TabPanel
             h="100vh"
             overflow="auto"
-            sx={scrollBarStyle}
+            //sx={scrollBarStyle}
           >
             <OverviewPanel />
           </TabPanel>

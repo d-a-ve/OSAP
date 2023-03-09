@@ -43,15 +43,25 @@ export default function RightPanelHeader() {
             />
           )}
           <Button
-            bg="green.300"
-            fontSize="xl"
+            bg="#aeb0b4"
+            fontSize="lg"
             py="8px"
+            opacity={0.75}
             fontWeight="semibold"
-            color="white"
-            w="70%"
-            onClick={
-              address ? disconnect : connectWallet
+            color="black"
+            leftIcon={
+              <Box
+                as="img"
+                h="26px"
+                w="auto"
+                src="/metamask.png"
+              />
             }
+            w="70%"
+            _hover={{
+              background: "#aeb0b4",
+              opacity: "1",
+            }}
           >
             {address
               ? "Connected"

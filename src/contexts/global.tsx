@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { ReactNode, createContext, useState, useEffect } from "react";
 import { BrowserProvider, ethers } from "ethers";
 import { CHAIN_ID } from "../utils/helpers/constants";
@@ -6,6 +7,8 @@ import {
   IPrimaryProfileCard,
   IPostCard,
   IAccountCard,
+  IPostInput,
+  IPosts,
 } from "../utils/types";
 import {
   ACCOUNTS,
@@ -13,7 +16,7 @@ import {
   PRIMARY_PROFILE_ESSENCES,
 } from "../utils/graphql";
 //import { useCancellableQuery } from "../hooks/useCancellableQuery";
-import { timeout } from "../utils/helpers/functions";
+import { extractCID, timeout } from "../utils/helpers/functions";
 import { useCancellableQuery } from "../hooks/useCancellableQuery";
 
 export const GlobalContext = createContext<IGlobalContext>({
@@ -21,14 +24,20 @@ export const GlobalContext = createContext<IGlobalContext>({
   setSidebarOpen: () => { },
   isRightPanelOpen: false,
   setisRightPanelOpen: () => { },
-  address: undefined,
-  accessToken: undefined,
-  primaryProfile: undefined,
+  isMoved: false,
+  setisMoved: () => { },
+  address: null,
+  imageURL: null,
+  setimageURL: () => { },
+  accessToken: null,
+  primaryProfile: null,
   indexingProfiles: [],
   indexingPosts: [],
   profileCount: 0,
   postCount: 0,
   posts: [],
+  postList: null,
+  setPostList: () => { },
   profiles: [],
   setAddress: () => { },
   setAccessToken: () => { },
@@ -39,35 +48,98 @@ export const GlobalContext = createContext<IGlobalContext>({
   setPostCount: () => { },
   setPosts: () => { },
   setProfiles: () => { },
+  postInput: {
+    nftMedia: "",
+    content: "",
+    privacy: "",
+    description: ""
+  },
+  setPostInput: () => { },
   connectWallet: async () => new Promise(() => { }),
   checkNetwork: async () => new Promise(() => { }),
 });
 GlobalContext.displayName = "GlobalContext";
 
 export const GlobalContextProvider = ({ children }: { children: ReactNode }) => {
+
+  const [isMoved, setisMoved] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isRightPanelOpen, setisRightPanelOpen] = useState(false);
-  const [provider, setProvider] = useState<BrowserProvider | undefined>(undefined);
-  const [address, setAddress] = useState<string | undefined>(undefined);
-  const [accessToken, setAccessToken] = useState<string | undefined>(undefined);
+  const [provider, setProvider] = useState<BrowserProvider | null>(null);
+  const [address, setAddress] = useState<string | null>(null);
+  const [imageURL, setimageURL] = useState<string | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(null);
   const [primaryProfile, setPrimaryProfile] = useState<
-    IPrimaryProfileCard | undefined
-  >(undefined);
+    IPrimaryProfileCard | null
+  >(null);
   const [profileCount, setProfileCount] = useState<number>(0);
   const [postCount, setPostCount] = useState<number>(0);
   const [indexingProfiles, setIndexingProfiles] = useState<IAccountCard[]>([]);
   const [indexingPosts, setIndexingPosts] = useState<IPostCard[]>([]);
   const [posts, setPosts] = useState<IPostCard[]>([]);
   const [profiles, setProfiles] = useState<IAccountCard[]>([]);
+  const [postList, setPostList] = useState<IPosts[] | null>(null)
+  const [postInput, setPostInput] =
+    useState<IPostInput>({
+      nftMedia: "",
+      content: "",
+      privacy: "public",
+      description: ""
+    });
+
 
 
   useEffect(() => {
     connectWallet();
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      setAccessToken(accessToken);
-    }
   }, []);
+
+  useEffect(() => {
+    if (!accessToken) {
+      const xx = localStorage.getItem("accessToken");
+      if (xx) {
+        //   console.log("my access Token", xx);
+        setAccessToken(xx);
+      }
+
+    }
+  }, [accessToken]);
+
+
+  useEffect(() => {
+    if (!(address && accessToken)) return;
+    let query: any;
+
+    const fetchProfile = async () => {
+      try {
+        /* Fetch primary profile */
+        query = useCancellableQuery({
+          query: PRIMARY_PROFILE,
+          variables: {
+            address: address,
+            // chainID: CHAIN_ID,
+            myAddress: address,
+          },
+        });
+        const res = await query;
+
+        /* Get the primary profile */
+        const primaryProfile = res?.data?.address?.wallet?.primaryProfile;
+        console.log(primaryProfile);
+
+        /* Set the primary profile */
+        setPrimaryProfile(primaryProfile);
+      } catch (error) {
+        /* Display error message */
+        console.error(error);
+      }
+    };
+    fetchProfile();
+
+    return () => {
+      query.cancel();
+    };
+  }, [address, accessToken]);
+
 
 
   useEffect(() => {
@@ -82,35 +154,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
     }
   }, [provider, address]);
 
-  useEffect(() => {
-    if (!(address && accessToken)) return;
-    let query: any;
-
-    const fetch = async () => {
-      try {
-        /* Fetch primary profile */
-        query = useCancellableQuery({
-          query: PRIMARY_PROFILE,
-          variables: {
-            address: address,
-            // chainID: CHAIN_ID,
-            myAddress: address,
-          },
-        });
-        const res = await query;
-        /* Get the primary profile */
-        const primaryProfile = res?.data?.address?.wallet?.primaryProfile;
-        setPrimaryProfile(primaryProfile);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetch();
-
-    return () => {
-      query.cancel();
-    };
-  }, [address, accessToken]);
 
   useEffect(() => {
     if (!(address && accessToken)) return;
@@ -261,6 +304,78 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
     };
   }, [address, accessToken, indexingPosts, postCount]);
 
+
+  useEffect(() => {
+    if (posts) {
+      console.log(posts);
+    }
+  }, [posts])
+
+
+  async function fetchProfile(cid: any) {
+    const res = await fetch(
+      `https://ipfs.infura.io:5001/api/v0/cat?arg=${cid}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Basic " +
+            btoa(
+              "2M5MWb0YnyHo9UzoPcl8m6XnQKt:cdc90170d4fa13d0325870442ff11eeb"
+            ),
+        },
+      }
+    )
+    const data = await res.text()
+    return JSON.parse(data)
+
+  }
+
+  async function fetchEssenceDetail() {
+    let b: any[] = [];
+    for (let i = 0; i < posts.length; i++) {
+      console.log(posts[i])
+      const cid = extractCID(posts[i].tokenURI);
+      const essenceID = posts[i].essenceID;
+      const avatar = posts[i].createdBy.avatar;
+      const { name, handle, bio } = await fetchProfile(posts[i].createdBy.metadata);
+      const res = await fetch(
+        `https://ipfs.infura.io:5001/api/v0/cat?arg=${cid}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Basic " +
+              btoa(
+                "2M5MWb0YnyHo9UzoPcl8m6XnQKt:cdc90170d4fa13d0325870442ff11eeb"
+              ),
+          },
+        }
+      )
+      const data = await res.text()
+      const { content, description, image_data, tags, issue_date }: any = JSON.parse(data);
+      const postObj: IPosts = {
+        content, description, image_data, tags, issue_date, name, handle, bio, avatar, essenceID
+      }
+      b.push(postObj);
+    }
+    setPostList(b)
+  }
+
+  useEffect(() => {
+    if (!postList) {
+      if (posts.length > 0) {
+        fetchEssenceDetail()
+      }
+    }
+  },)
+
+  useEffect(() => {
+    console.log(postList);
+  }, [postList])
+
+
+
   /* Function to connect with MetaMask wallet */
   const connectWallet = async () => {
     try {
@@ -351,12 +466,18 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
         setSidebarOpen,
         isRightPanelOpen,
         setisRightPanelOpen,
+        isMoved,
+        setisMoved,
         address,
+        imageURL,
+        setimageURL,
         accessToken,
         primaryProfile,
         profileCount,
         postCount,
         posts,
+        postList,
+        setPostList,
         profiles,
         indexingProfiles,
         indexingPosts,
@@ -371,9 +492,34 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
         setProfiles,
         checkNetwork,
         connectWallet,
+        postInput,
+        setPostInput
       }}
     >
       {children}
     </GlobalContext.Provider>
   );
 };
+
+
+
+// const getEssences = async () => {
+//   const { data } = await getEssencesByFilter({
+//     variables: {
+//       address: routerAddress as string,
+//       // chainID: 5,
+//       myAddress:
+//         accessToken && address
+//           ? address
+//           : "0x0000000000000000000000000000000000000000",
+//     },
+//   });
+
+//   setFeaturedPosts(
+//     data?.address.wallet.primaryProfile.essences.edges.map(
+//       (item: any) => item.node
+//     ) || []
+//   );
+
+//   setIsLoading(false);
+// };

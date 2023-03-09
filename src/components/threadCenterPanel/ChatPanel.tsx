@@ -1,7 +1,7 @@
 import { Stack } from "@chakra-ui/react"
 import OverviewChatCard from "./OverviewChatCard"
 import MessageInput from "./MessageInput"
-import { scrollBarStyle } from "../../styles/scrollbarStyle"
+//import { scrollBarStyle } from "../styles/scrollbarStyle"
 
 type ChatPanelType = {
   messagesData?: any
@@ -41,7 +41,7 @@ export default function ChatPanel({
       <Stack
         h={`calc(100vh - ${chatBottomPadding}px)`}
         overflow="auto"
-        sx={scrollBarStyle}
+        //sx={scrollBarStyle}
         ref={messagesColumnRef}
       >
         {messages}

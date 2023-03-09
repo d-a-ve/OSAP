@@ -1,8 +1,16 @@
+import { GlobalContext } from "@/contexts/global"
+import { extractCID } from "@/utils/helpers/functions"
+import { IPosts } from "@/utils/types"
 import {
   Box,
   Stack,
   useBreakpointValue,
 } from "@chakra-ui/react"
+import {
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 import CreateThread from "./CreateThread"
 import PopularThreadsSection from "./PopularThreadSection"
 import ThreadCard from "./ThreadCard"
@@ -26,6 +34,8 @@ export default function HomeCenterPanelBody({
     base: smVariant,
     md: mdVariant,
   })
+  const { postList, primaryProfile }: any =
+    useContext(GlobalContext)
 
   return (
     <Box
@@ -34,7 +44,7 @@ export default function HomeCenterPanelBody({
       w={
         !variants?.navigationButton
           ? "100%"
-          : "25%"
+          : "27%"
       }
       overflowY="auto"
       overflowX="hidden"
@@ -46,9 +56,17 @@ export default function HomeCenterPanelBody({
 
       <Stack spacing="0px">
         <PopularThreadsSection />
-        <ThreadCard />
-        <ThreadCard />
-        <ThreadCard />
+
+        {postList &&
+          postList.length > 0 &&
+          postList.map(
+            (details: IPosts, i: number) => (
+              <ThreadCard
+                postObj={details}
+                key={i}
+              />
+            )
+          )}
       </Stack>
     </Box>
   )

@@ -4,9 +4,9 @@ export const PROFILE_NFT_CONTRACT =
     "0x57e12b7a5f38a7f9c23ebd0400e6e53f2a45f271"; // Link3 ProfileNFT contract address
 
 export const PROFILE_NFT_OPERATOR =
-    "0xaB24749c622AF8FC567CA2b4d3EC53019F83dB8F";
+    "0x75bD5a94c5a727d1B458b26f546b728159587968";
 
-export const DOMAIN = "test.com"; // Domain name
+export const DOMAIN = "cyberconnect.me"; // Domain name
 
 export const SUGGESTED_PROFILES = [
     {

@@ -2,12 +2,16 @@ import {
   Box,
   useBreakpointValue,
 } from "@chakra-ui/react"
-
 import HomeCenterPanelheader from "./HomeCenterPanelHeader"
 import HomeCenterPanelBody from "./HomeCenterPanelBody"
 import FloatingButton from "./floatingActionButton"
+import { useContext } from "react"
+import { GlobalContext } from "../../contexts/global"
 
 export default function CenterPanel() {
+  const { isMoved }: any = useContext(
+    GlobalContext
+  )
   const smVariant = {
     navigation: "drawer",
     navigationButton: true,
@@ -24,9 +28,13 @@ export default function CenterPanel() {
   return (
     <Box
       ml={
-        !variants?.navigationButton ? "20%" : "5%"
+        !variants?.navigationButton
+          ? "20%"
+          : isMoved
+          ? "20%"
+          : "8px"
       }
-      mr={["0", "0", "25%"]}
+      mr={["", "0", "25%"]}
       w="100%"
       flex={2}
       overflow="auto"
@@ -40,6 +48,7 @@ export default function CenterPanel() {
         "&::-webkit-scrollbar": {
           width: "6px",
         },
+
         "&::-webkit-scrollbar-track": {
           backgroundColor: "transparent",
         },
@@ -48,6 +57,7 @@ export default function CenterPanel() {
           borderRadius: "3px",
         },
         scrollbarWidth: "thin",
+        transition: "margin 0.3s ease-in",
       }}
     >
       <HomeCenterPanelheader

@@ -9,15 +9,10 @@ import {
 } from "@chakra-ui/react"
 import { useContext } from "react"
 import { GlobalContext } from "../../contexts/global"
+import RightPanelBody from "./RightPanelBody"
+import RightPanelHeader from "./RightPanelHeader"
 
-type RightPanelType = {
-  panelHeader?: JSX.Element
-  panelBody?: JSX.Element
-}
-export default function RightPanel({
-  panelBody,
-  panelHeader,
-}: RightPanelType) {
+export default function RightPanel() {
   const { isSidebarOpen, setSidebarOpen }: any =
     useContext(GlobalContext)
   const toggleSidebar = () =>
@@ -51,8 +46,29 @@ export default function RightPanel({
         right={0}
         bg="white"
       >
-        {panelHeader}
-        {panelBody}
+        <Box
+          as="img"
+          src="/triangle.png"
+          opacity={0.35}
+          h="140vh"
+          w="100%"
+          zIndex={-6}
+          position={"absolute"}
+        />
+
+        <Box
+          as="img"
+          src="/circle1.png"
+          opacity={0.25}
+          h="30vh"
+          w="100%"
+          zIndex={-6}
+          position={"absolute"}
+        />
+
+        <RightPanelHeader />
+
+        <RightPanelBody />
       </Box>
     </Box>
   ) : (
@@ -64,10 +80,10 @@ export default function RightPanel({
       <DrawerOverlay>
         <DrawerContent bg={"white"}>
           <DrawerHeader>
-            {panelHeader}
+            <RightPanelHeader />
           </DrawerHeader>
           <DrawerBody py={16}>
-            {panelBody}
+            <RightPanelBody />
           </DrawerBody>
         </DrawerContent>
       </DrawerOverlay>

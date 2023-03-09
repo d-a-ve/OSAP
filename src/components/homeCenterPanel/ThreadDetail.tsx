@@ -1,3 +1,4 @@
+import { IPosts } from "@/utils/types"
 import {
   Box,
   Text,
@@ -5,13 +6,16 @@ import {
 } from "@chakra-ui/react"
 
 export default function ThreadDetail({
+  postObj,
   width,
 }: {
   width?: string
+  postObj: IPosts
 }) {
-  const content =
-    " Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum esse consequuntur vitae dolore incidunt expedita, ullam ab aspernatur omnis exercitationem repellat  dolor earum atque obcaecati illo? Ab molestias tenetur eum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro illo eaque provident ut facilis, iste exercitationem repellendus rem eum totam voluptates vitae, ad dolore nihil! Sequi quidem atque magnam explicabo."
-  const words = content.split(" ")
+  const content = postObj?.description
+  const words = content
+    ? content.split(" ")
+    : [" "]
   const shortendContent =
     words.length > 30
       ? words.slice(0, 30).join(" ") + "..."
@@ -19,21 +23,25 @@ export default function ThreadDetail({
 
   return (
     <Box w={width}>
-      <Heading size="sm">Segun Adebayo</Heading>
+      <Heading size="sm">{postObj?.name}</Heading>
+      <Text fontSize={"xs"}>
+        @{postObj?.handle}
+      </Text>
 
-      <Text pt="4px">
+      <Text pt="4px" fontSize={"14px"}>
         {shortendContent}
         {/* if width is 300px then it is displayed on the popular trends */}
-        {width !== "300px" && (
-          <span
-            style={{
-              color: "blue",
-              fontSize: "12px",
-            }}
-          >
-            Read more
-          </span>
-        )}
+        {width !== "300px" &&
+          words.length > 30 && (
+            <span
+              style={{
+                color: "blue",
+                fontSize: "12px",
+              }}
+            >
+              &nbsp; Read more
+            </span>
+          )}
       </Text>
     </Box>
   )
