@@ -8,9 +8,7 @@ import ThreadDetail from "./ThreadDetail"
 export default function PopularThreadsSection() {
   const count = [1, 2, 3, 4]
   return (
-    <Box borderY="1px" borderColor="gray.100"
-
-    >
+    <Box borderY="1px" borderColor="gray.100">
       <Heading
         size="md"
         px={12}
@@ -44,7 +42,6 @@ export default function PopularThreadsSection() {
           <Box
             pl={4}
             key={x}
-
             py={6}
             bg={"white"}
             shadow={"lg"}

@@ -16,11 +16,11 @@ export default function LeftPanelBody(prop: {
   const { address, connectWallet }: any =
     useContext(GlobalContext)
 
-
-  const formatted =
-    address ?
-      address.slice(0, 6) + "..." + address.slice(address.length, 2)
-      : "not connected";
+  const formatted = address
+    ? address.slice(0, 6) +
+      "..." +
+      address.slice(address.length, 2)
+    : "not connected"
 
   return (
     <>
