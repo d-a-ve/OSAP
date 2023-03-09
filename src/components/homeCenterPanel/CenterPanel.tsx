@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   useBreakpointValue,
 } from "@chakra-ui/react"
 import HomeCenterPanelheader from "./HomeCenterPanelHeader"
@@ -7,6 +8,7 @@ import HomeCenterPanelBody from "./HomeCenterPanelBody"
 import FloatingButton from "./floatingActionButton"
 import { useContext } from "react"
 import { GlobalContext } from "../../contexts/global"
+import { TailSpin } from "react-loading-icons"
 
 export default function CenterPanel() {
   const { isMoved }: any = useContext(
@@ -25,14 +27,14 @@ export default function CenterPanel() {
     md: mdVariant,
   })
 
+  const moveCenterPanelBy = isMoved ? "60%" : "0"
+
   return (
     <Box
       ml={
         !variants?.navigationButton
           ? "20%"
-          : isMoved
-          ? "20%"
-          : "8px"
+          : moveCenterPanelBy
       }
       mr={["", "0", "25%"]}
       w="100%"

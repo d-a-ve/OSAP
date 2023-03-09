@@ -119,8 +119,8 @@ function SigninBtn() {
             : "black",
         }}
         color={address ? "white" : "gray.400"}
-        fontSize="xl"
-        w="60%"
+        fontSize={["md", "lg", "lg", "xl"]}
+        w={["90%", "60%", "90%", "70%"]}
         mt="8px"
         disabled={address ? false : true}
         onClick={handleOnClick}

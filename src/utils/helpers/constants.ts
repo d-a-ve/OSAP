@@ -105,3 +105,6 @@ export const FEATURED_POSTS = [
         isCollectedByMe: false,
     },
 ];
+
+export const placeholderImage =
+    "https://via.placeholder.com/150x150.png?text=Avatar "
