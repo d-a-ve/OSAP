@@ -17,7 +17,7 @@ import {
   gql,
   GraphQLClient,
 } from "graphql-request"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { GlobalContext } from "../../contexts/global"
 import { ModalContext } from "../../contexts/modal"
 import {
@@ -26,6 +26,7 @@ import {
 } from "../../utils/types"
 import OSAP from "../../utils/abi/OSAP.json"
 import { ethers, id } from "ethers"
+import { TailSpin } from "react-loading-icons"
 
 const endpoint =
   "https://api.cyberconnect.dev/testnet/"
@@ -38,6 +39,7 @@ const MintProfileBtn = ({
   bio,
   operator,
 }: ISignupInput) => {
+  const [loading, setLoading] = useState(false)
   const { address }: any = useContext(
     GlobalContext
   )
@@ -70,6 +72,7 @@ const MintProfileBtn = ({
   const toast = useToast()
 
   async function createProfile() {
+    setLoading(true)
     const xx = localStorage.getItem("accessToken")
     if (xx) {
       const accessToken = xx
@@ -106,7 +109,7 @@ const MintProfileBtn = ({
           to: address,
           operator:
             operator.length < 58
-              ? "0x75bD5a94c5a727d1B458b26f546b728159587968"
+              ? "0xF8908f32067a875a1c204787F4953d5Af3C32784"
               : operator,
           metadata: ipfsHash,
           handle: "osap_" + handle.toLowerCase(),
@@ -195,9 +198,10 @@ const MintProfileBtn = ({
                 "NFT minted successfully!"
               )
 
+              setLoading(false)
               handleModal(
                 "success",
-                "Profile was created!"
+                "Profile was created! Please refresh page"
               )
               // toast({
               //     title: "Profile was created!",
@@ -228,13 +232,15 @@ const MintProfileBtn = ({
           )
           console.log("peroidic polling end")
 
+          setLoading(false)
+
           //Close modal or show end animation
         }
       } catch (error: any) {
         console.log(
           JSON.stringify(error, undefined, 2)
         )
-
+        setLoading(false)
         const errorMessage =
           error.response.errors[0].message
         console.log(errorMessage) // output: "err: invalid ccProfile handle"
@@ -273,6 +279,14 @@ const MintProfileBtn = ({
       onClick={handleOnClick}
       cursor={"pointer"}
     >
+      {loading && (
+        <TailSpin
+          stroke="#fff"
+          height={20}
+          className="m-0"
+          strokeWidth={2}
+        />
+      )}
       Mint Profile
     </Button>
   )

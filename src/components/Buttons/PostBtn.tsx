@@ -462,7 +462,7 @@ function PostBtn({
           strokeWidth={2}
         />
       )}
-      Post
+      {!loading && "Post"}
     </Button>
   )
 }

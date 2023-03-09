@@ -31,9 +31,7 @@ import {
   RiVideoAddFill,
 } from "react-icons/ri"
 
-export default function CreateThread(
-
-) {
+export default function CreateThread() {
   const {
     imageURL,
     setimageURL,
@@ -152,7 +150,8 @@ export default function CreateThread(
               display={"flex"}
               alignItems="center"
             >
-              {postInput.description.length > 1 && (
+              {postInput.description.length >
+                1 && (
                 <>
                   <Menu>
                     <MenuButton

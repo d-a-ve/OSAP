@@ -50,11 +50,10 @@ const PrimaryProfileCard = ({
   return (
     <div className="profile-card w-full">
       <div className="profile-card-img center">
-     
-          <div>
-            <Avatar value={handle} size={80} />
-          </div>
-       
+        <div>
+          <Avatar value={handle} size={80} />
+        </div>
+
         {address && (
           <div className="profile-card-address flex flex-col">
             <div>{`${address.slice(

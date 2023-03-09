@@ -27,8 +27,6 @@ const EssenceMwForm = () => {
     IEssenceMwCard[]
   >([])
 
-
-
   /* Query to get user information by wallet address */
   const [getAddress] = useLazyQuery(ADDRESS)
 
@@ -37,30 +35,26 @@ const EssenceMwForm = () => {
 
   useEffect(() => {
     if (!(address && accessToken)) return
-      ; (async () => {
-        /* Get the primary profile for the wallet address */
-        const res = await getAddress({
-          variables: {
-            address: address,
-          },
-        })
-        const primaryProfile =
-          res?.data?.address?.wallet?.primaryProfile
-        const essences =
-          primaryProfile?.essences?.edges?.map(
-            (edge: any) => edge?.node
-          ) || []
+    ;(async () => {
+      /* Get the primary profile for the wallet address */
+      const res = await getAddress({
+        variables: {
+          address: address,
+        },
+      })
+      const primaryProfile =
+        res?.data?.address?.wallet?.primaryProfile
+      const essences =
+        primaryProfile?.essences?.edges?.map(
+          (edge: any) => edge?.node
+        ) || []
 
-        /* Set the essences */
-        setEssences(essences)
-      })()
+      /* Set the essences */
+      setEssences(essences)
+    })()
   }, [address, accessToken, getAddress])
 
-
-  return (
-    <>
-    </>
-  )
+  return <></>
 }
 
 export default EssenceMwForm

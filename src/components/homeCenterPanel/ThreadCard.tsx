@@ -9,7 +9,9 @@ import {
 import Avatar from "../Avatar"
 import ThreadDetail from "./ThreadDetail"
 
-export default function ThreadCard(prop: { postObj: IPosts }) {
+export default function ThreadCard(prop: {
+  postObj: IPosts
+}) {
   const smVariant = {
     navigation: "drawer",
     navigationButton: true,

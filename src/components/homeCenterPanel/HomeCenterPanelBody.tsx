@@ -34,13 +34,13 @@ export default function HomeCenterPanelBody({
     base: smVariant,
     md: mdVariant,
   })
-  const { postList, primaryProfile }: any = useContext(GlobalContext)
+  const { postList, primaryProfile }: any =
+    useContext(GlobalContext)
 
   return (
     <Box
       mt="60px"
       bg="white"
-
       w={
         !variants?.navigationButton
           ? "100%"
@@ -55,24 +55,18 @@ export default function HomeCenterPanelBody({
       )}
 
       <Stack spacing="0px">
-
-
         <PopularThreadsSection />
 
-
-
-
-
-
-
-        {postList && postList.length > 0 && (
-          postList.map((details: IPosts, i: number) => (
-            <ThreadCard postObj={details} key={i} />
-          ))
-        )}
-
-
-
+        {postList &&
+          postList.length > 0 &&
+          postList.map(
+            (details: IPosts, i: number) => (
+              <ThreadCard
+                postObj={details}
+                key={i}
+              />
+            )
+          )}
       </Stack>
     </Box>
   )
