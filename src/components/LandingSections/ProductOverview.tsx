@@ -47,7 +47,7 @@ import {
                   address . Manage your DAO Tokens .
                   Convert between currencies through
                   the in-app ShapeShift integration
-                  . Pair from or to another device's
+                  . Pair from or to another device
                   Bitsharker wallet so that you can
                   access that same wallet across all
                   devices (mobile, desktop, tablet,
@@ -55,7 +55,7 @@ import {
                   Transfer funds from a paper wallet
                   / private key, including encrypted
                   paper wallets . Send to contract
-                  addresses . Use your device's
+                  addresses . Use your device
                   camera to scan addresses in QR
                   code form (mobile only) for
                   sending and receiving bitcoin and

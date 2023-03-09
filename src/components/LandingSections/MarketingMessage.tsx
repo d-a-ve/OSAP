@@ -42,7 +42,7 @@ import {
               cryptocurrencies and digital lives.
             </Text>
             <Text fontSize="sm" marginBottom="2rem">
-              One of the challenges facing bitcoin's
+              One of the challenges facing bitcoin
               adopters around the globe is storage.
               How exactly are you supposed to keep
               your bitcoins secure if you plan on
