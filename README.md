@@ -9,17 +9,17 @@ OSAP is a gamified social media where individuals, organisations, and communitie
 - Post about any theme or pecuilar challenge
 - Allow public (OSAP members) or only subscribers to discuss contibute solutions
 - Members will vote on solutions
-- Top the contributor scoreboard to win weekly exciting prizes and achievement NFTs
+- A contributor scoreboard where the top contributors win weekly exciting prizes and achievement NFTs
 
 
 ## Tools
 The web3 frontend is built on React, Nextjs, and ethers for contract interaction
 
-- [Cyberconnect]()
-- [Lit SDK]()
-- [Livepeer]()
-- [Pinata]()
-- [Infura]()
+- [Cyberconnect](https://docs.cyberconnect.me/)
+- [Lit SDK](https://developer.litprotocol.com/)
+- [Livepeer](https://docs.livepeer.org/)
+- [Pinata](https://docs.pinata.cloud/)
+- [Infura](https://docs.infura.io/infura/)
 
 ### Smart Contract
 | Contract | Standard | Address                                    |
@@ -53,12 +53,12 @@ The web3 frontend is built on React, Nextjs, and ethers for contract interaction
 
 *...*
 
-## What Next fo OSAP
+## What Next for OSAP
 *...*
 
 ## Contributors
 
-- D-av-e
+- D-a-ve
 - Tinybird
 
 ## Links
