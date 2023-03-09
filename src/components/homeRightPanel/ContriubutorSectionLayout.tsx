@@ -13,7 +13,11 @@ export default function ContributorSectionLayout({
   children: ReactNode
 }) {
   return (
-    <Box rounded="xl" m="16px" bg="gray.50">
+    <Box
+      rounded="xl"
+      m="16px"
+      bg="rgb(248 250 252, 0.7)"
+    >
       <Heading
         size="md"
         textAlign="center"

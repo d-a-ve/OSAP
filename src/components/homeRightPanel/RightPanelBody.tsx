@@ -25,6 +25,7 @@ export default function RightPanelBody() {
         }}
       >
         <TopContributorSection />
+
         <FollowContributorSection />
       </Box>
     </>

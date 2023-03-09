@@ -6,21 +6,29 @@ export interface IGlobalContext {
   setSidebarOpen: (isSidebarOpen: boolean) => void;
   isRightPanelOpen: boolean;
   setisRightPanelOpen: (isSidebarOpen: boolean) => void;
-  address: string | undefined;
-  accessToken: string | undefined;
-  primaryProfile: IPrimaryProfileCard | undefined;
+  isMoved: boolean;
+  setisMoved: (isSidebarOpen: boolean) => void;
+  address: string | null;
+  imageURL: string | null;
+  setimageURL: (imageURL: string) => void,
+  accessToken: string | null;
+  primaryProfile: IPrimaryProfileCard | null;
   profileCount: number;
   postCount: number;
   posts: IPostCard[];
+  postList: IPosts[] | null,
+  setPostList: (postList: IPosts[] | null) => void,
   profiles: IAccountCard[];
   indexingProfiles: IAccountCard[];
   indexingPosts: IPostCard[];
-  setAddress: (address: string | undefined) => void;
-  setAccessToken: (accessToken: string | undefined) => void;
-  setPrimaryProfile: (primaryProfile: IPrimaryProfileCard | undefined) => void;
+  setAddress: (address: string | null) => void;
+  setAccessToken: (accessToken: string | null) => void;
+  setPrimaryProfile: (primaryProfile: IPrimaryProfileCard | null) => void;
   setProfileCount: (profileCount: number) => void;
   setPostCount: (postCount: number) => void;
   setPosts: (posts: IPostCard[]) => void;
+  postInput: IPostInput;
+  setPostInput: (postInput: IPostInput) => void;
   setProfiles: (profiles: IAccountCard[]) => void;
   setIndexingProfiles: (indexingProfiles: IAccountCard[]) => void;
   setIndexingPosts: (indexingPosts: IPostCard[]) => void;
@@ -185,11 +193,10 @@ export interface ISignupInput {
 }
 
 export interface IPostInput {
-  nftImageURL: string;
-  content: string;
-  middleware: string;
-  title: string;
-  description: string;
+  nftMedia: string,
+  content: string,
+  privacy: string,
+  description: string
 }
 
 export interface IPrimaryProfileCard {
@@ -197,4 +204,16 @@ export interface IPrimaryProfileCard {
   handle: string;
   avatar: string;
   metadata: string;
+}
+export interface IPosts {
+  content: string,
+  description: string,
+  image_data: string,
+  tags: string[],
+  issue_date: string,
+  name: string,
+  handle: string,
+  bio: string,
+  avatar: string,
+  essenceID: number
 }
