@@ -8,6 +8,8 @@ import {
   TabPanels,
   TabPanel,
   Stack,
+  Center,
+  Spinner,
 } from "@chakra-ui/react"
 import { BiArrowBack } from "react-icons/bi"
 import OverviewChatCard from "./OverviewChatCard"
@@ -17,19 +19,11 @@ import MessageInput from "./MessageInput"
 import TCenterPanelHeader from "./TCenterPanelHeader"
 import ChatPanel from "./ChatPanel"
 import { useMessage } from "@/hooks/useMessage"
+import { useContext, useEffect, useState } from "react"
+import { GlobalContext } from "@/contexts/global"
 
-export default function TCenterPanel() {
-  const {
-    message,
-    messagesData,
-    buttonBoxRef,
-    boxRef,
-    tabRef,
-    handleChange,
-    sendMessage,
-    chatBottomPadding,
-    messagesColumnRef,
-  } = useMessage()
+export default function TCenterPanel({ id }: { id: number }) {
+
 
   const smVariant = {
     navigation: "drawer",
@@ -44,6 +38,35 @@ export default function TCenterPanel() {
     md: mdVariant,
   })
 
+  const { postList, primaryProfile }: any =
+    useContext(GlobalContext)
+
+  const [essence, setEssence] = useState(null);
+
+  useEffect(() => {
+    if (postList && postList.length > 0) {
+      if (!essence) {
+        console.log("idddd", id)
+        const xx = postList.filter((x: any) => x.essenceID === id);
+        if (xx) {
+          setEssence(xx)
+        }
+      }
+    }
+
+  }, [essence, postList])
+
+  useEffect(() => {
+    if (essence) {
+      console.log("nnnn", essence)
+    }
+  }, [essence])
+
+
+
+
+
+
   return (
     <Box
       ml={
@@ -57,7 +80,7 @@ export default function TCenterPanel() {
       borderColor="gray.100"
     >
       <TCenterPanelHeader
-        buttonBoxRef={buttonBoxRef}
+
       />
 
       <Tabs
@@ -66,34 +89,46 @@ export default function TCenterPanel() {
         colorScheme="green.300"
         size="lg"
       >
-        <TabList pt={3} ref={tabRef}>
+        <TabList pt={3}>
           <Tab>Overview</Tab>
           <Tab>Chat</Tab>
         </TabList>
-        <TabPanels>
-          <TabPanel
-            h="100vh"
-            overflow="auto"
+        {!essence ?
+
+          <Center>
+            <Spinner />
+          </Center>
+          : <TabPanels>
+            <TabPanel
+              h="100vh"
+              overflow="auto"
             //sx={scrollBarStyle}
-          >
-            <OverviewPanel />
-          </TabPanel>
-          <TabPanel p={0}>
-            <ChatPanel
-              handleChange={handleChange}
-              message={message}
-              messagesData={messagesData}
-              messagesColumnRef={
-                messagesColumnRef
+            >
+              {
+                essence && (
+                  <OverviewPanel essence={essence} />
+                )
               }
-              sendMessage={sendMessage}
-              boxRef={boxRef}
-              chatBottomPadding={
-                chatBottomPadding
-              }
-            />
-          </TabPanel>
-        </TabPanels>
+
+
+            </TabPanel>
+            <TabPanel p={0}>
+              {/* <ChatPanel
+                handleChange={handleChange}
+                message={message}
+                messagesData={messagesData}
+                messagesColumnRef={
+                  messagesColumnRef
+                }
+                sendMessage={sendMessage}
+                boxRef={boxRef}
+                chatBottomPadding={
+                  chatBottomPadding
+                }
+              /> */}
+            </TabPanel>
+          </TabPanels>
+        }
       </Tabs>
     </Box>
   )

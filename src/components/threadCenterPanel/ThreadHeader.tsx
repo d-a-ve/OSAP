@@ -19,33 +19,30 @@ export default function ThreadHeader({
   return (
     <>
       {/* thread creator details */}
-      <Flex align="center" gap={3}>
-        <Box
-          w="60px"
-          h="60px"
-          rounded="full"
-          bg="gray.300"
-        />
-        <Box>
-          <Heading size={["sm", "sm", "md"]}>
-            Segun Adebayo
-          </Heading>
-          <Text fontSize={["xs", "xs", "md"]}>
-            Created on Mar. 23
-          </Text>
-        </Box>
-      </Flex>
-      <Heading
-        mt={3}
-        size={["md", "md", "md", "lg"]}
-      >
-        Lorem ipsum dolor sit amet consectetur,
-        adipisicing elit. Quibusdam corrupti
-        pariatur nam quia unde ullam vel
-        aspernatur est, explicabo facere veniam
-        mollitia, tenetur impedit ducimus alias
-        reprehenderit quis veritatis! Debitis!
-      </Heading>
+      {
+        name && (
+          <><Flex align="center" gap={3}>
+            <Box
+              w="60px"
+              h="60px"
+              rounded="full"
+              bg="gray.300" />
+            <Box>
+              <Heading size={["sm", "sm", "md"]}>
+                {name}
+              </Heading>
+              <Text fontSize={["xs", "xs", "md"]}>
+                {dateCreated}
+              </Text>
+            </Box>
+          </Flex><Heading
+            mt={3}
+            size={["md", "md", "md", "lg"]}
+          >
+              {topic}
+            </Heading></>
+        )
+      }
     </>
   )
 }

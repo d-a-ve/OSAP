@@ -19,6 +19,7 @@ export interface IGlobalContext {
   postList: IPosts[] | null,
   setPostList: (postList: IPosts[] | null) => void,
   profiles: IAccountCard[];
+  ranking: any[] | null,
   indexingProfiles: IAccountCard[];
   indexingPosts: IPostCard[];
   setAddress: (address: string | null) => void;

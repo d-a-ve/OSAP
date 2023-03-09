@@ -47,7 +47,7 @@ export default function ChatPanel({
         {messages}
       </Stack>
       <MessageInput
-        message={message}
+        comment={message}
         handleChange={handleChange}
         sendMessage={sendMessage}
         boxRef={boxRef}
