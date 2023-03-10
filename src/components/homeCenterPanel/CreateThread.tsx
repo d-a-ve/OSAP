@@ -15,6 +15,7 @@ import {
   MenuItem,
   MenuList,
   Avatar,
+  useToast,
 } from "@chakra-ui/react"
 import {
   ChangeEvent,
@@ -58,6 +59,7 @@ export default function CreateThread() {
   const [control, setControl] = useState(0)
   const { handleModal }: any =
     useContext(ModalContext)
+  const toast = useToast();
 
   const controls = [
     {
@@ -92,6 +94,12 @@ export default function CreateThread() {
   }, [postInput.content, handleModal])
 
   function handlePost() {
+    toast({
+      title: "Disabled by Admin, please try again later!",
+      status: "info",
+      duration: 2000,
+    });
+    return;
     handleModal("post", "Profile was created!")
   }
 
@@ -159,58 +167,58 @@ export default function CreateThread() {
             >
               {postInput.description.length >
                 1 && (
-                <>
-                  <Menu>
-                    <MenuButton
-                    //zIndex={2}
-                    >
-                      <Box
-                        display="flex"
-                        color="green.300"
-                        borderRadius={"25px"}
-                        bg="whitesmoke"
-                        alignItems={"center"}
-                        py={2}
-                        px={4}
-                        mr={4}
+                  <>
+                    <Menu>
+                      <MenuButton
+                      //zIndex={2}
                       >
-                        {controls[control].icon}
-                        &nbsp; Visible to &nbsp;
-                        <span>
-                          {controls[
-                            control
-                          ].title.toLowerCase()}
-                        </span>
-                      </Box>
-                    </MenuButton>
-                    <MenuList>
-                      {controls.map(
-                        (x: any, i: number) => (
-                          <MenuItem
-                            w="100%"
-                            key={i}
-                            onClick={() =>
-                              setControl(i)
-                            }
-                            bg={
-                              i === control
-                                ? "whitesmoke"
-                                : "transparent"
-                            }
-                            color={
-                              i === control
-                                ? "green"
-                                : "gray"
-                            }
-                          >
-                            {x.icon} {x.title}
-                          </MenuItem>
-                        )
-                      )}
-                    </MenuList>
-                  </Menu>
-                </>
-              )}
+                        <Box
+                          display="flex"
+                          color="green.300"
+                          borderRadius={"25px"}
+                          bg="whitesmoke"
+                          alignItems={"center"}
+                          py={2}
+                          px={4}
+                          mr={4}
+                        >
+                          {controls[control].icon}
+                          &nbsp; Visible to &nbsp;
+                          <span>
+                            {controls[
+                              control
+                            ].title.toLowerCase()}
+                          </span>
+                        </Box>
+                      </MenuButton>
+                      <MenuList>
+                        {controls.map(
+                          (x: any, i: number) => (
+                            <MenuItem
+                              w="100%"
+                              key={i}
+                              onClick={() =>
+                                setControl(i)
+                              }
+                              bg={
+                                i === control
+                                  ? "whitesmoke"
+                                  : "transparent"
+                              }
+                              color={
+                                i === control
+                                  ? "green"
+                                  : "gray"
+                              }
+                            >
+                              {x.icon} {x.title}
+                            </MenuItem>
+                          )
+                        )}
+                      </MenuList>
+                    </Menu>
+                  </>
+                )}
 
               <Button
                 bg="green.300"

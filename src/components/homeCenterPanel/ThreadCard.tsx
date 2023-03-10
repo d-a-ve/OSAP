@@ -67,6 +67,8 @@ export default function ThreadCard(prop: {
           <ThreadDetail postObj={prop.postObj} />
 
           <Box
+            as="img"
+            src={postObj?.image_data}
             w="100%"
             h="200px"
             bg="gray.400"

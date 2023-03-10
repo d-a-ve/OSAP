@@ -262,10 +262,11 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       }
 
     }
-  }, [accessToken]);
+  }, []);
 
   // Fetch primaryprofile of from connected wallet
   useEffect(() => {
+
     if (!(address && accessToken)) return;
     let query: any;
 
@@ -483,9 +484,10 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       }
 
       const tokenHolders: any = await Promise.all(promises);
-
+      console.log(tokenHolders)
       // Return the first 10 unique token holder addresses
-      return tokenHolders.slice(0, 10);;
+      return tokenHolders;
+
     }
 
     getFirst10TokenHolders().then(async (holders) => {
@@ -504,7 +506,8 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
         /* Set the essences */
         if (_essences.length > 0) {
           // just take one post from each user
-          setEssences([...essences, _essences[0]]);
+          console.log("mmmmmmmmm", _essences)
+          setEssences([...essences, ..._essences]);
         }
       }
 
@@ -518,15 +521,12 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
   //populate the user's feed with posts
   useEffect(() => {
     if (!postList) {
-      if (posts.length > 0) {
-        //The user has some posts already
-        fetchEssenceDetail(posts)
-      } else {
-        //Fetch some suggested posts
-        if (essences.length > 0) {
-          fetchEssenceDetail(essences)
 
-        }
+      //Fetch some suggested posts
+      if (essences.length > 0) {
+        console.log("esssss", essences);
+        fetchEssenceDetail(essences)
+
       }
     }
   },)

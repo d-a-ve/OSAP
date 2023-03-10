@@ -11,10 +11,10 @@ import {
   IconButton,
   Center,
   Spinner,
+  useToast,
 } from "@chakra-ui/react"
 import { BiSend } from "react-icons/bi"
 import {
-  Content,
   Env,
 } from "@cyberlab/cyberconnect-v2/lib/types"
 import { GlobalContext } from "@/contexts/global"
@@ -24,21 +24,11 @@ import CyberConnect from "@cyberlab/cyberconnect-v2"
 // const endpoint = "https://api.cyberconnect.dev/testnet/";
 // const graphQLClient = new GraphQLClient(endpoint);
 
-type MessageInputType = {
-  comment?: string
-  handleChange?: (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => void
-  sendMessage?: () => void
-  boxRef?: React.LegacyRef<HTMLDivElement>
-}
 
-export default function MessageInput({
-  comment,
-  handleChange,
-  sendMessage,
-  boxRef,
-}: MessageInputType) {
+
+export default function MessageInput({ id }: { id: string }) {
+  const [comment, setComment] = useState("");
+  const toast = useToast();
   const [isCommenting, setIsCommenting] =
     useState(false)
   const { address, primaryProfile }: any =
@@ -66,8 +56,17 @@ export default function MessageInput({
   }, [])
 
   const createPost = async () => {
+
+    toast({
+      title: "Disabled by Admin, please try again later!",
+      status: "info",
+      duration: 2000,
+    });
+
+
+    return;
     const res = await cc?.createPost({
-      title: "title",
+      title: id, //Thread ID for the essense nft 
       body: comment!,
       author: primaryProfile.handle,
     })
@@ -81,12 +80,13 @@ export default function MessageInput({
 
   return (
     <Box
+      py={8}
       pos="fixed"
-      bottom="20px"
+      bg="white"
+      bottom={0}
       right={["0", "0", "25%"]}
       left={["0", "0", "20%"]}
-      px={[2, 2, 4]}
-      ref={boxRef}
+      px={[2, 2, 0]}
     >
       <form>
         <InputGroup size="lg">
@@ -95,8 +95,8 @@ export default function MessageInput({
             placeholder="Message"
             focusBorderColor="green.100"
             value={comment}
+            onChange={((e) => setComment(e.target.value))}
             required
-            onChange={handleChange}
           />
           <InputRightElement>
             {isCommenting && (
@@ -112,7 +112,11 @@ export default function MessageInput({
                 fontSize="2xl"
                 icon={<BiSend />}
                 size="lg"
-                onClick={createPost}
+                disabled={true}
+                onClick={
+
+                  createPost
+                }
               />
             )}
           </InputRightElement>

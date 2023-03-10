@@ -1,6 +1,7 @@
 import { Stack } from "@chakra-ui/react"
 import OverviewChatCard from "./OverviewChatCard"
 import MessageInput from "./MessageInput"
+import { threadData } from "./ThreadBody"
 //import { scrollBarStyle } from "../styles/scrollbarStyle"
 
 type ChatPanelType = {
@@ -14,21 +15,15 @@ type ChatPanelType = {
     e: React.ChangeEvent<HTMLInputElement>
   ) => void
 }
-export default function ChatPanel({
-  messagesData,
-  message,
-  chatBottomPadding,
-  messagesColumnRef,
-  boxRef,
-  sendMessage,
-  handleChange,
-}: ChatPanelType) {
-  const messages = messagesData?.map(
+export default function ChatPanel() {
+
+
+  const messages = threadData?.map(
     (message: any, i: any) => {
       return (
         <OverviewChatCard
           key={i}
-          dateCreated={message.dateCreated}
+          // dateCreated={message.dateCreated}
           name={message.name}
           message={message.message}
           displayVote={false}
@@ -39,19 +34,12 @@ export default function ChatPanel({
   return (
     <>
       <Stack
-        h={`calc(100vh - ${chatBottomPadding}px)`}
+        h={`calc(100vh - $100px)`}
         overflow="auto"
-        //sx={scrollBarStyle}
-        ref={messagesColumnRef}
       >
         {messages}
       </Stack>
-      <MessageInput
-        comment={message}
-        handleChange={handleChange}
-        sendMessage={sendMessage}
-        boxRef={boxRef}
-      />
+
     </>
   )
 }

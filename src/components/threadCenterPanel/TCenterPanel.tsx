@@ -102,7 +102,7 @@ export default function TCenterPanel({
             <TabPanel
               h="100vh"
               overflow="auto"
-              //sx={scrollBarStyle}
+            //sx={scrollBarStyle}
             >
               {essence && (
                 <OverviewPanel
@@ -111,23 +111,15 @@ export default function TCenterPanel({
               )}
             </TabPanel>
             <TabPanel p={0}>
-              {/* <ChatPanel
-                handleChange={handleChange}
-                message={message}
-                messagesData={messagesData}
-                messagesColumnRef={
-                  messagesColumnRef
-                }
-                sendMessage={sendMessage}
-                boxRef={boxRef}
-                chatBottomPadding={
-                  chatBottomPadding
-                }
-              /> */}
+              <ChatPanel
+              />
             </TabPanel>
           </TabPanels>
         )}
       </Tabs>
+      <MessageInput
+        id={"retrieved post"}
+      />
     </Box>
   )
 }

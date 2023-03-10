@@ -6,6 +6,7 @@ import {
   Heading,
   HStack,
 } from "@chakra-ui/react"
+import { useRouter } from "next/router"
 import { useContext } from "react"
 import ThreadDetail from "./ThreadDetail"
 
@@ -34,10 +35,19 @@ export default function PopularThreadsSection() {
   const count =
     postList && postList.length > 0
       ? Array.from(
-          { length: 4 },
-          () => postList[0]
-        )
+        { length: 4 },
+        () => postList[0]
+      )
       : null
+
+  const router = useRouter()
+  const navigate = (path: string) =>
+    router.push(
+      path + "/[id]",
+      `${path + "/" + count![1].essenceID}`
+    )
+
+
   return (
     <Box borderY="1px" borderColor="gray.100">
       {primaryProfile && (
@@ -79,9 +89,13 @@ export default function PopularThreadsSection() {
               key={i}
               py={6}
               shadow="lg"
-              // h="140px"
+              cursor={"pointer"}
+              onClick={() => navigate("/thread")}
+
+            // h="140px"
             >
               <Box
+
                 flex={"1"}
                 bg={"white"}
                 w="70%"

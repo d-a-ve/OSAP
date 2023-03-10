@@ -3,9 +3,10 @@ import {
   Text,
   Stack,
 } from "@chakra-ui/react"
+import MessageInput from "./MessageInput"
 import ChatCard from "./OverviewChatCard"
 
-const threadData = [
+export const threadData = [
   {
     name: "Dave Aronmwan",
     message:
@@ -45,10 +46,12 @@ export default function ThreadBody() {
   return (
     <Box mt={5}>
       {/* check stackoverflow section for more options to add to what's beside the solutions eg like a dropdown for solutions to show*/}
-      <Text fontSize="xl">Solutions</Text>
-      <Stack mt={2} spacing={4}>
+      <Text fontSize="xl">Top Voted Solutions</Text>
+      <Stack mt={2} spacing={4} pb={32}>
         {votedSolutions}
       </Stack>
+
+
     </Box>
   )
 }
