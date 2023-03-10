@@ -23,7 +23,7 @@ export default function FollowContributorSection() {
 
       setsSuggested(filered.slice(0, 2))
     }
-  }, [ranking, address,])
+  }, [ranking, address])
 
   return (
     <ContributorSectionLayout title="Contributors To Follow">

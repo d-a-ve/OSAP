@@ -198,9 +198,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
         }
       }
 
-
-
-
     } catch (error: any) {
       /* This error code indicates that the chain has not been added to MetaMask */
       if (error.code === 4902) {
@@ -236,6 +233,28 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
     }
   };
 
+  /* Function to check if the network is the correct one */
+  const checkNetwork = async (provider: BrowserProvider) => {
+    try {
+      const network = await provider.getNetwork();
+      if (network) {
+        if (network.chainId !== BigInt(CHAIN_ID)) {
+          /* Switch network if the chain id doesn't correspond to Goerli Testnet Network */
+          await provider.send("wallet_switchEthereumChain", [
+            { chainId: "0x" + CHAIN_ID.toString(16) },
+          ]);
+          /* Trigger a page reload */
+          window.location.reload();
+        }
+      }
+
+
+
+
+    } catch (error: any) {
+      /* This error code indicates that the chain has not been added to MetaMask */
+      if (error.code === 4902) {
+
 
 
   // Check that a connected wallet is in the write network
@@ -250,8 +269,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       alert(error.message);
     }
   }, [provider, address]);
-
-
   // fetch accesstoken from local storage
   useEffect(() => {
     if (!accessToken) {
@@ -487,7 +504,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       console.log(tokenHolders)
       // Return the first 10 unique token holder addresses
       return tokenHolders;
-
     }
 
     getFirst10TokenHolders().then(async (holders) => {
@@ -521,12 +537,10 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
   //populate the user's feed with posts
   useEffect(() => {
     if (!postList) {
-
       //Fetch some suggested posts
       if (essences.length > 0) {
         console.log("esssss", essences);
         fetchEssenceDetail(essences)
-
       }
     }
   },)

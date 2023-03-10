@@ -14,8 +14,9 @@ export default function Prototype() {
         justifyContent="center"
         direction="column"
         margin="2rem auto"
-        padding="5%"
+        py="5%"
         color="white"
+        w={["", "", "80%"]}
       >
         <Text
           fontWeight="bold"
@@ -28,8 +29,6 @@ export default function Prototype() {
         <Text
           fontSize={["md", "lg"]}
           marginBottom="2rem"
-          fontWeight="bold"
-          textAlign="center"
         >
           We iterated our wireframe design by
           conducting informal usability testing
@@ -43,11 +42,10 @@ export default function Prototype() {
       </Flex>
       <Flex
         gap={10}
-        margin="4rem auto"
+        // margin="4rem auto"
         justify="center"
         alignItems="center"
         flexWrap="wrap"
-        maxW="80vw"
       >
         <Box
           as="img"
@@ -60,25 +58,18 @@ export default function Prototype() {
         <Box
           as="img"
           src="/m1.png"
-          w="200px"
-          h="200px"
-          bg="gray.400"
+          w={["100%", "", "", "300px"]}
         />
         <Box
           as="img"
           src="/m3.png"
-          w="200px"
-          h="200px"
-          bg="gray.400"
+          w={["100%", "", "", "300px"]}
         />
         <Box
           as="img"
           src="/mobile.png"
-          w="200px"
-          h="200px"
-          bg="gray.400"
+          w={["100%", "", "", "300px"]}
         />
-        <Box w="200px" h="200px" bg="gray.400" />
       </Flex>
     </Box>
   )

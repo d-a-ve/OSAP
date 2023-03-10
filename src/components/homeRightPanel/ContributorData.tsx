@@ -60,8 +60,8 @@ export default function ContributorData({
 
   const formatted = owner
     ? owner.slice(0, 6) +
-    "..." +
-    owner.slice(39, owner.length)
+      "..." +
+      owner.slice(39, owner.length)
     : ""
 
   return (
@@ -88,8 +88,8 @@ export default function ContributorData({
                 {i === 4
                   ? "Explorer"
                   : profile
-                    ? profile.handle.split("_")[1]
-                    : formatted}
+                  ? profile.handle.split("_")[1]
+                  : formatted}
               </Text>
               <Text color="brown" fontSize="xs">
                 {i === 4
@@ -135,8 +135,8 @@ export default function ContributorData({
               {i === 4
                 ? "Explorer"
                 : profile
-                  ? profile.handle.split("_")[1]
-                  : formatted}
+                ? profile.handle.split("_")[1]
+                : formatted}
             </Text>
             <Text color="brown" fontSize="xs">
               {i === 4 ? "your rank" : "Explorer"}

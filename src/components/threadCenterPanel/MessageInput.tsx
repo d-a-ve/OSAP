@@ -113,10 +113,7 @@ export default function MessageInput({ id }: { id: string }) {
                 icon={<BiSend />}
                 size="lg"
                 disabled={true}
-                onClick={
-
-                  createPost
-                }
+                onClick={createPost}
               />
             )}
           </InputRightElement>
