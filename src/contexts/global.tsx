@@ -612,7 +612,7 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
     if (!ranking && address) {
       fetchRanking();
     }
-  },);
+  }, []);
 
 
   // useEffect(() => {
