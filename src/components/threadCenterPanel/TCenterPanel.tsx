@@ -61,7 +61,7 @@ export default function TCenterPanel({
         }
       }
     }
-  }, [essence, postList])
+  }, [essence, postList, id])
 
   useEffect(() => {
     if (essence) {
