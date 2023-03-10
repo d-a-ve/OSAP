@@ -99,7 +99,8 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
   const [suggestedPosts, setSuggestedPosts] = useState<any[]>([]);
   const [ranking, setRanking] = useState<any[] | null>(null)
   const [getAddress] = useLazyQuery(ADDRESS)
-const router = useRouter();
+
+  const router = useRouter();
 
   // Function to fetchprofile from metadatahash
   async function fetchProfile(cid: any) {
@@ -235,13 +236,8 @@ const router = useRouter();
       }
     }
   };
+  // Check that a connected wallet is in the right network
 
-  //Connect Wallet
-  useEffect(() => {
-    connectWallet();
-  }, []);
-
-  // Check that a connected wallet is in the write network
   useEffect(() => {
     /* Check if the user connected with wallet */
     if (!(provider && address)) return;
@@ -253,7 +249,6 @@ const router = useRouter();
       alert(error.message);
     }
   }, [provider, address]);
-
 
   // fetch accesstoken from local storage
   useEffect(() => {

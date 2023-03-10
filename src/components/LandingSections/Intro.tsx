@@ -6,25 +6,50 @@ import {
   Heading,
   Button,
 } from "@chakra-ui/react"
+
+import { useRouter } from "next/router"
+import { FaGithub } from "react-icons/fa"
 import Header from "./Header"
 
 export default function Intro() {
+  const router = useRouter()
+
+  function navigate(path: string) {
+    router.push(path)
+  }
+
   return (
     <Box h="100vh">
       <Header />
-      <Button
-        bg="green"
-        height={"55px"}
-        color="white"
+      <Box
         position={"fixed"}
         right={"10%"}
         top={"70px"}
-        _hover={{
-          background: "green",
-        }}
       >
-        Go to App
-      </Button>
+        <Button
+          bg="gray"
+          height={"55px"}
+          color="white"
+          mr={3}
+          _hover={{
+            background: "gray",
+          }}
+        >
+          <FaGithub />
+        </Button>
+
+        <Button
+          bg="green"
+          height={"55px"}
+          color="white"
+          onClick={() => navigate("/home")}
+          _hover={{
+            background: "green",
+          }}
+        >
+          Go to App
+        </Button>
+      </Box>
       <Flex
         h="100vh"
         justify="center"

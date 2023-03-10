@@ -28,6 +28,7 @@ export default function OverviewPanel({
       }: IPosts = essence
 
       if (essence) {
+        console.log("mineeee", essence)
         setData({
           content,
           description,
