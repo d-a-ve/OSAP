@@ -35,8 +35,8 @@ export default function ThreadCard(prop: {
   const router = useRouter()
   const navigate = (path: string) =>
     router.push(
-      path + "/[id]",
-      `${path + "/" + postObj.essenceID}`
+      path + "/",
+      `${path + "/?id=" + postObj.essenceID}`
     )
 
   return (

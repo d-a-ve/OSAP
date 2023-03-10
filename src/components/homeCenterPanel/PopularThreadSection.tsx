@@ -43,8 +43,8 @@ export default function PopularThreadsSection() {
   const router = useRouter()
   const navigate = (path: string) =>
     router.push(
-      path + "/[id]",
-      `${path + "/" + count![1].essenceID}`
+      path + "/",
+      `${path + "/?id=" + count![1].essenceID}`
     )
 
 
@@ -90,7 +90,7 @@ export default function PopularThreadsSection() {
               py={6}
               shadow="lg"
               cursor={"pointer"}
-              onClick={() => navigate("/thread")}
+            // onClick={() => navigate("/thread")}
             >
               <Box
 

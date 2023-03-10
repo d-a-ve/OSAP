@@ -1,4 +1,5 @@
 
+import Layout from "@/components/Layout";
 import { Flex } from "@chakra-ui/react";
 import CenterPanel from "../components/homeCenterPanel/CenterPanel";
 import LeftPanel from "../components/homeLeftPanel/LeftPanel";
@@ -6,20 +7,14 @@ import RightPanel from "../components/homeRightPanel/RightPanel";
 
 
 
-export default function Home() {
-
+export default function Home(showSidebar: any) {
+  showSidebar = true;
 
   return (
-
-    <Flex position={"fixed"} w="100%" h="100vh">
-      <LeftPanel
-      />
-      <CenterPanel
-      />
-      <RightPanel />
-
-    </Flex>
-
+    // <Layout sides={showSidebar}>
+    <CenterPanel
+    />
+    // </Layout>
   )
 }
 
