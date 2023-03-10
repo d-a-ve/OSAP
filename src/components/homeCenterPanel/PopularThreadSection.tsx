@@ -91,8 +91,6 @@ export default function PopularThreadsSection() {
               shadow="lg"
               cursor={"pointer"}
               onClick={() => navigate("/thread")}
-
-            // h="140px"
             >
               <Box
 
