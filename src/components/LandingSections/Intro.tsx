@@ -6,6 +6,7 @@ import {
   Heading,
   Button,
 } from "@chakra-ui/react"
+
 import { useRouter } from "next/router"
 import { FaGithub } from "react-icons/fa"
 import Header from "./Header"
