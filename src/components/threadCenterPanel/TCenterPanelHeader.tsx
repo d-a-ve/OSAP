@@ -7,11 +7,7 @@ import { useRouter } from "next/router"
 import { BiArrowBack } from "react-icons/bi"
 import SideBarButton from "../homeCenterPanel/SideBarButton"
 
-export default function TCenterPanelHeader({
-
-}: {
-
-}) {
+export default function TCenterPanelHeader({}: {}) {
   const smVariant = {
     navigation: "drawer",
     navigationButton: true,
@@ -25,12 +21,11 @@ export default function TCenterPanelHeader({
     md: mdVariant,
   })
 
-  const router = useRouter();
+  const router = useRouter()
   const showSidebarButton =
-    variants?.navigationButton;
+    variants?.navigationButton
 
   function handlePop() {
-
     router.back()
   }
 

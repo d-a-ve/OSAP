@@ -272,17 +272,19 @@ const MintProfileBtn = ({
       color={"green"}
       fontSize="xl"
       fontWeight={800}
-      w="60%"
+      w="30%"
       h="48px"
       mt="8px"
       borderRadius={8}
       onClick={handleOnClick}
       cursor={"pointer"}
+      pr={loading ? 6 : 3}
     >
       {loading && (
         <TailSpin
           stroke="#fff"
           height={20}
+          width={20}
           className="m-0"
           strokeWidth={2}
         />

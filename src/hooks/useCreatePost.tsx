@@ -34,7 +34,7 @@ function useCreatePost() {
             }
         },
 
-        []);
+        [cc]);
 
     return useMemo(
         () => ({

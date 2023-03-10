@@ -19,12 +19,18 @@ import MessageInput from "./MessageInput"
 import TCenterPanelHeader from "./TCenterPanelHeader"
 import ChatPanel from "./ChatPanel"
 import { useMessage } from "@/hooks/useMessage"
-import { useContext, useEffect, useState } from "react"
+import {
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 import { GlobalContext } from "@/contexts/global"
 
-export default function TCenterPanel({ id }: { id: number }) {
-
-
+export default function TCenterPanel({
+  id,
+}: {
+  id: number
+}) {
   const smVariant = {
     navigation: "drawer",
     navigationButton: true,
@@ -41,19 +47,20 @@ export default function TCenterPanel({ id }: { id: number }) {
   const { postList, primaryProfile }: any =
     useContext(GlobalContext)
 
-  const [essence, setEssence] = useState(null);
-
+  const [essence, setEssence] = useState(null)
+  /* eslint-disable react-hooks/rules-of-hooks */
   useEffect(() => {
     if (postList && postList.length > 0) {
       if (!essence) {
         console.log("idddd", id)
-        const xx = postList.filter((x: any) => x.essenceID === id);
+        const xx = postList.filter(
+          (x: any) => x.essenceID === id
+        )
         if (xx) {
           setEssence(xx)
         }
       }
     }
-
   }, [essence, postList])
 
   useEffect(() => {
@@ -61,11 +68,6 @@ export default function TCenterPanel({ id }: { id: number }) {
       console.log("nnnn", essence)
     }
   }, [essence])
-
-
-
-
-
 
   return (
     <Box
@@ -79,9 +81,7 @@ export default function TCenterPanel({ id }: { id: number }) {
       border="1px"
       borderColor="gray.100"
     >
-      <TCenterPanelHeader
-
-      />
+      <TCenterPanelHeader />
 
       <Tabs
         isFitted
@@ -93,24 +93,22 @@ export default function TCenterPanel({ id }: { id: number }) {
           <Tab>Overview</Tab>
           <Tab>Chat</Tab>
         </TabList>
-        {!essence ?
-
+        {!essence ? (
           <Center>
             <Spinner />
           </Center>
-          : <TabPanels>
+        ) : (
+          <TabPanels>
             <TabPanel
               h="100vh"
               overflow="auto"
-            //sx={scrollBarStyle}
+              //sx={scrollBarStyle}
             >
-              {
-                essence && (
-                  <OverviewPanel essence={essence} />
-                )
-              }
-
-
+              {essence && (
+                <OverviewPanel
+                  essence={essence}
+                />
+              )}
             </TabPanel>
             <TabPanel p={0}>
               {/* <ChatPanel
@@ -128,7 +126,7 @@ export default function TCenterPanel({ id }: { id: number }) {
               /> */}
             </TabPanel>
           </TabPanels>
-        }
+        )}
       </Tabs>
     </Box>
   )

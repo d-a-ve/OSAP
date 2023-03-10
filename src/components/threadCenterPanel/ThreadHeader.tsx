@@ -19,14 +19,15 @@ export default function ThreadHeader({
   return (
     <>
       {/* thread creator details */}
-      {
-        name && (
-          <><Flex align="center" gap={3}>
+      {name && (
+        <>
+          <Flex align="center" gap={3}>
             <Box
               w="60px"
               h="60px"
               rounded="full"
-              bg="gray.300" />
+              bg="gray.300"
+            />
             <Box>
               <Heading size={["sm", "sm", "md"]}>
                 {name}
@@ -35,14 +36,15 @@ export default function ThreadHeader({
                 {dateCreated}
               </Text>
             </Box>
-          </Flex><Heading
+          </Flex>
+          <Heading
             mt={3}
             size={["md", "md", "md", "lg"]}
           >
-              {topic}
-            </Heading></>
-        )
-      }
+            {topic}
+          </Heading>
+        </>
+      )}
     </>
   )
 }

@@ -8,8 +8,12 @@ import {
 } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import ThreadDetail from "./ThreadDetail"
-import { GlobalContext } from "@/contexts/global";
-import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "@/contexts/global"
+import {
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 
 export default function ThreadCard(prop: {
   postObj: IPosts
@@ -27,15 +31,15 @@ export default function ThreadCard(prop: {
     md: mdVariant,
   })
 
-  const { postObj } = prop;
-  const router = useRouter();
-  const navigate = (path: string) => router.push(path + '/[id]', `${path + '/' + postObj.essenceID}`);
-
-
-
+  const { postObj } = prop
+  const router = useRouter()
+  const navigate = (path: string) =>
+    router.push(
+      path + "/[id]",
+      `${path + "/" + postObj.essenceID}`
+    )
 
   return (
-
     <Card
       rounded="0px"
       direction="row"

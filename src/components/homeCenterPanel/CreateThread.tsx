@@ -14,6 +14,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Avatar,
 } from "@chakra-ui/react"
 import {
   ChangeEvent,
@@ -30,12 +31,14 @@ import {
   RiImageAddFill,
   RiVideoAddFill,
 } from "react-icons/ri"
+import { placeholderImage } from "@/utils/helpers/constants"
 
 export default function CreateThread() {
   const {
     imageURL,
     setimageURL,
     postInput,
+    primaryProfile,
     setPostInput,
   } = useContext(GlobalContext)
 
@@ -109,11 +112,15 @@ export default function CreateThread() {
 
       <Box pt="16px" pl="8px">
         {/* use Avatar component  */}
-        <Box
-          bg="gray.400"
-          rounded="full"
-          height="70px"
-          width="70px"
+        <Avatar
+          src={
+            primaryProfile
+              ? primaryProfile.avatar
+              : placeholderImage
+          }
+          bg="gray"
+          w={["60px"]}
+          h={["60px"]}
         />
       </Box>
       <CardBody>
@@ -207,6 +214,9 @@ export default function CreateThread() {
 
               <Button
                 bg="green.300"
+                _hover={{
+                  backgroundColor: "green.400",
+                }}
                 textColor="white"
                 fontSize="md"
                 onClick={handlePost}

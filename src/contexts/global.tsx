@@ -23,6 +23,7 @@ import { useCancellableQuery } from "../hooks/useCancellableQuery";
 import OSAP from "../utils/abi/OSAP.json"
 import { useLazyQuery } from "@apollo/client";
 import { connected } from "process";
+import { useRouter } from "next/router";
 
 
 export const GlobalContext = createContext<IGlobalContext>({
@@ -98,7 +99,7 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
   const [suggestedPosts, setSuggestedPosts] = useState<any[]>([]);
   const [ranking, setRanking] = useState<any[] | null>(null)
   const [getAddress] = useLazyQuery(ADDRESS)
-
+const router = useRouter();
 
   // Function to fetchprofile from metadatahash
   async function fetchProfile(cid: any) {
@@ -601,6 +602,14 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       fetchRanking();
     }
   },);
+
+
+  // useEffect(() => {
+  //   if (address) {
+  //     router.push("/home")
+  //   }
+  // }, [address]);
+
 
 
   return (

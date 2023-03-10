@@ -2,15 +2,66 @@
 
 ## Designed to foster collaborative problem-solving and community building across Africa.
 
-OSAP is a gamified social media where individuals, organisations, and communities can meet, share ideas, and work towards solutions that are inspired by challenges pecuiliar to the continent.
+OSAP (Open source African progress) is a gamified social media where individuals, organisations, and communities can meet, share ideas, and work towards solutions that are inspired by challenges peculiar in our world
 
-## Features
+## Cyberconnect Integration
 
-- Build Social Connections and subscribe to ccProfiles
-- Post about any theme or pecuilar challenge
-- Allow public (OSAP members) or only subscribers to discuss contibute solutions
-- Members will vote on solutions
-- Top the contributor scoreboard to win weekly exciting prizes and achievement NFTs
+OSAP is built on top of ccprofiles created via cyberconnect for users. The profiles hold essense nfts which are posts that can be shared publicly, or conditionally with lit protocol.
+
+<ul>
+                  <li>
+                    Build Social Connections and
+                    subscribe to ccProfiles{" "}
+                    <span
+                      style="color: yellow"
+                    >
+                      (Cyberconnect
+                      create-profile, twitter
+                      auth, erc-721 )
+                    </span>{" "}
+                  </li>
+                  <li>
+                    Post about any pecuilar
+                    challenge or theme for
+                    discussion
+                    <span
+                           style="color: yellow"
+                    >
+                      (Cyberconnect
+                      create-essence)
+                    </span>
+                  </li>
+                  <li>
+                    Allow public (OSAP members),
+                    or only subscribers to discuss
+                    contibute solutions &nbsp;
+                    <span
+                          style="color: yellow"
+                    >
+                      (Lit
+                      access-control-conditions)
+                    </span>
+                  </li>
+                  <li>
+                    Members can vote on solutions
+                    <span
+                    style="color: yellow"
+                    >
+                      ( Custom nft contract)
+                    </span>
+                  </li>
+                  <li>
+                    Contributors are challenged to
+                    top the voting scoreboard,
+                    perhaps to win weekly prizes
+                    and sbt badges
+                  </li>
+                  <span
+                    style="color: yellow"
+                  >
+                    ( Custom nft contract)
+                  </span>
+                </ul>
 
 ## Tools
 
@@ -57,13 +108,21 @@ _..._
 
 _..._
 
+<<<<<<< HEAD
+
 ## What Next fo OSAP
+
+# _..._
+
+## What Next for OSAP
 
 _..._
 
+> > > > > > > a92e62b83bba188df81bc6d88a43519dacc8bfcc
+
 ## Contributors
 
-- D-av-e
+- D-a-ve
 - Tinybird
 
 ## Links

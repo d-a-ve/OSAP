@@ -1,4 +1,8 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, {
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 import {
   Box,
   InputGroup,
@@ -9,14 +13,16 @@ import {
   Spinner,
 } from "@chakra-ui/react"
 import { BiSend } from "react-icons/bi"
-import { Content, Env } from "@cyberlab/cyberconnect-v2/lib/types"
+import {
+  Content,
+  Env,
+} from "@cyberlab/cyberconnect-v2/lib/types"
 import { GlobalContext } from "@/contexts/global"
 import useCreatePost from "@/hooks/useCreatePost"
 import CyberConnect from "@cyberlab/cyberconnect-v2"
 
 // const endpoint = "https://api.cyberconnect.dev/testnet/";
 // const graphQLClient = new GraphQLClient(endpoint);
-
 
 type MessageInputType = {
   comment?: string
@@ -33,42 +39,45 @@ export default function MessageInput({
   sendMessage,
   boxRef,
 }: MessageInputType) {
-  const [isCommenting, setIsCommenting] = useState(false)
-  const { address, primaryProfile }: any = useContext(
-    GlobalContext
-  )
-  const [mounted, setIsMounted] = React.useState(false);
-  const [targetContentId, setTargetContentId] = React.useState("");
-  const [cc, setCC] = React.useState<CyberConnect>();
-  const [contentId, setContentId] = React.useState("");
+  const [isCommenting, setIsCommenting] =
+    useState(false)
+  const { address, primaryProfile }: any =
+    useContext(GlobalContext)
+  const [mounted, setIsMounted] =
+    React.useState(false)
+  const [targetContentId, setTargetContentId] =
+    React.useState("")
+  const [cc, setCC] =
+    React.useState<CyberConnect>()
+  const [contentId, setContentId] =
+    React.useState("")
 
   React.useEffect(() => {
-    setIsMounted(true);
+    setIsMounted(true)
     const cyberConnect = new CyberConnect({
       namespace: "CyberConnect",
       provider: (window as any)?.ethereum,
       env: Env.STAGING,
-      appId: "e20d0b35-8e8c-46f9-80bc-ccfeda19f133",
-    });
+      appId:
+        "e20d0b35-8e8c-46f9-80bc-ccfeda19f133",
+    })
 
-    setCC(cyberConnect);
-  }, []);
+    setCC(cyberConnect)
+  }, [])
 
   const createPost = async () => {
     const res = await cc?.createPost({
       title: "title",
       body: comment!,
       author: primaryProfile.handle,
-    });
+    })
 
-    setContentId(res?.contentID);
-  };
-
+    setContentId(res?.contentID)
+  }
 
   useEffect(() => {
-   console.log(contentId)
+    console.log(contentId)
   }, [contentId])
-  
 
   return (
     <Box
@@ -90,34 +99,28 @@ export default function MessageInput({
             onChange={handleChange}
           />
           <InputRightElement>
-
             {isCommenting && (
               <Center>
                 <Spinner />
               </Center>
             )}
-            {
-              !isCommenting && (
-                <IconButton
-                  bg="green.300"
-                  color="white"
-                  aria-label="Send Message"
-                  fontSize="2xl"
-                  icon={<BiSend />}
-                  size="lg"
-                  onClick={createPost}
-                />
-              )
-            }
+            {!isCommenting && (
+              <IconButton
+                bg="green.300"
+                color="white"
+                aria-label="Send Message"
+                fontSize="2xl"
+                icon={<BiSend />}
+                size="lg"
+                onClick={createPost}
+              />
+            )}
           </InputRightElement>
         </InputGroup>
       </form>
     </Box>
   )
 }
-
-
-
 
 //  try {
 
@@ -168,10 +171,6 @@ export default function MessageInput({
 //         }
 //         )
 
-
-
-
-
 //       const ethereum = (window as any).ethereum
 //       await ethereum.request({
 //         method: "eth_requestAccounts",
@@ -181,8 +180,6 @@ export default function MessageInput({
 //       )
 //       /* Get the signer from the provider */
 //       const signer = provider.getSigner();
-
-
 
 //       /* Get the signature for the message signed with the wallet */
 //       const fromAddress = await (
@@ -196,15 +193,11 @@ export default function MessageInput({
 
 //       //  const key =  await (await signer).signMessage(message!);
 
-
 //       console.log(signature);
-
 
 //       const signingKey = (await signer).signMessage(comment!);
 
 //       console.log(signingKey);
-
-      
 
 //       const mutation = gql`
 //       mutation PublishComment($input: PublishRequest!, $targetContentID: String!) {
@@ -232,8 +225,5 @@ export default function MessageInput({
 //       } catch (error) {
 //         console.error(JSON.stringify(error, undefined, 2));
 //       }
-
-
-
 
 //     }

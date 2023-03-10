@@ -387,7 +387,7 @@ function PostBtn({
       const method = "eth_signTypedData_v4"
       const signature = await (
         await signer
-      ).provider.send(method, params);
+      ).provider.send(method, params)
 
       /* Call the relay to broadcast the transaction */
       const relayResult = await relay({

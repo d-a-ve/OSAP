@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import React from 'react'
-import Home from './home';
+import LandingPage from './welcome';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,6 +16,9 @@ export default function IndexPage() {
 
 
   return (
-    <Home />
+    <>
+      <LandingPage />
+      {/* <Home /> */}
+    </>
   )
 }

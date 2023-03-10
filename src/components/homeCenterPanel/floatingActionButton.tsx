@@ -23,11 +23,12 @@ export default function FloatingButton() {
       {/* Show only on mobile */}
       {variants?.navigationButton && (
         <Button
-          leftIcon={<AddIcon />}
+          leftIcon={<AddIcon fontSize="18px" />}
           aria-label="New Post"
           position="fixed"
-          bottom="4"
-          right="4"
+          bottom="6"
+          right="6"
+          fontSize="18px"
           size="lg"
           colorScheme="green"
         >
