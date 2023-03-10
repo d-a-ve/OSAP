@@ -14,9 +14,7 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import { BiSend } from "react-icons/bi"
-import {
-  Env,
-} from "@cyberlab/cyberconnect-v2/lib/types"
+import { Env } from "@cyberlab/cyberconnect-v2/lib/types"
 import { GlobalContext } from "@/contexts/global"
 import useCreatePost from "@/hooks/useCreatePost"
 import CyberConnect from "@cyberlab/cyberconnect-v2"
@@ -77,7 +75,7 @@ export default function MessageInput({ id }: { id: string }) {
   useEffect(() => {
     console.log(contentId)
   }, [contentId])
-
+  
   return (
     <Box
       py={8}
@@ -113,11 +111,7 @@ export default function MessageInput({ id }: { id: string }) {
                 icon={<BiSend />}
                 size="lg"
                 disabled={true}
-                onClick={
-
-                  createPost
-                }
-              />
+                onClick={createPost} />
             )}
           </InputRightElement>
         </InputGroup>

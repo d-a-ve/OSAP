@@ -39,7 +39,6 @@ export default function ChatPanel() {
       >
         {messages}
       </Stack>
-
     </>
   )
 }
