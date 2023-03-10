@@ -6,8 +6,14 @@ import {
   Stack,
   useBreakpointValue,
 } from "@chakra-ui/react"
-import Avatar from "../Avatar"
+import { useRouter } from "next/router"
 import ThreadDetail from "./ThreadDetail"
+import { GlobalContext } from "@/contexts/global"
+import {
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 
 export default function ThreadCard(prop: {
   postObj: IPosts
@@ -24,8 +30,16 @@ export default function ThreadCard(prop: {
     base: smVariant,
     md: mdVariant,
   })
+
+  const { postObj } = prop
+  const router = useRouter()
+  const navigate = (path: string) =>
+    router.push(
+      path + "/[id]",
+      `${path + "/" + postObj.essenceID}`
+    )
+
   return (
-    // check the card example on the chakra ui website for a complete sample
     <Card
       rounded="0px"
       direction="row"
@@ -35,6 +49,7 @@ export default function ThreadCard(prop: {
       borderColor="gray.100"
       _hover={{ background: "gray.50" }}
       px={!variants?.navigationButton ? 12 : 4}
+      onClick={() => navigate("/thread")}
     >
       <Box pt="16px" pl="8px">
         {/* use Avatar component  */}

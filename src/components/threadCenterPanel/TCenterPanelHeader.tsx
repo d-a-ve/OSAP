@@ -3,14 +3,11 @@ import {
   Button,
   useBreakpointValue,
 } from "@chakra-ui/react"
+import { useRouter } from "next/router"
 import { BiArrowBack } from "react-icons/bi"
 import SideBarButton from "../homeCenterPanel/SideBarButton"
 
-export default function TCenterPanelHeader({
-  buttonBoxRef,
-}: {
-  buttonBoxRef: React.RefObject<HTMLDivElement>
-}) {
+export default function TCenterPanelHeader({}: {}) {
   const smVariant = {
     navigation: "drawer",
     navigationButton: true,
@@ -24,20 +21,26 @@ export default function TCenterPanelHeader({
     md: mdVariant,
   })
 
+  const router = useRouter()
   const showSidebarButton =
     variants?.navigationButton
+
+  function handlePop() {
+    router.back()
+  }
 
   return (
     <Flex
       pt={[6, 6, 4]}
       px={4}
-      ref={buttonBoxRef}
+      // ref={buttonBoxRef}
       justify="space-between"
     >
       <Button
         bg="green.300"
         leftIcon={<BiArrowBack />}
         color="white"
+        onClick={handlePop}
       >
         Back
       </Button>

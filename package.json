@@ -12,6 +12,7 @@
     "@apollo/client": "^3.7.10",
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.1",
+    "@cyberlab/cyberconnect-v2": "^0.0.1-alpha.20",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@ethersproject/providers": "^5.7.2",
@@ -52,4 +53,3 @@
     "vite": "^4.1.0"
   }
 }
-

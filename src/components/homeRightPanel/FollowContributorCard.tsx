@@ -1,7 +1,9 @@
 import { Button, Flex } from "@chakra-ui/react"
 import ContributorData from "./ContributorData"
 
-export default function FollowContributorCard() {
+export default function FollowContributorCard({
+  owner,
+}: any) {
   return (
     <Flex
       bg="transparent"
@@ -11,7 +13,7 @@ export default function FollowContributorCard() {
       p="16px"
       gap="12px"
     >
-      <ContributorData />
+      <ContributorData owner={owner} i={0} />
       <Button
         color="green.400"
         bg="transparent"
