@@ -233,30 +233,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
     }
   };
 
-  /* Function to check if the network is the correct one */
-  const checkNetwork = async (provider: BrowserProvider) => {
-    try {
-      const network = await provider.getNetwork();
-      if (network) {
-        if (network.chainId !== BigInt(CHAIN_ID)) {
-          /* Switch network if the chain id doesn't correspond to Goerli Testnet Network */
-          await provider.send("wallet_switchEthereumChain", [
-            { chainId: "0x" + CHAIN_ID.toString(16) },
-          ]);
-          /* Trigger a page reload */
-          window.location.reload();
-        }
-      }
-
-
-
-
-    } catch (error: any) {
-      /* This error code indicates that the chain has not been added to MetaMask */
-      if (error.code === 4902) {
-
-
-
   // Check that a connected wallet is in the write network
   useEffect(() => {
     /* Check if the user connected with wallet */
