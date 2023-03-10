@@ -7,7 +7,6 @@ import {
   Link,
   Button,
 } from "@chakra-ui/react"
-
 import { useRouter } from "next/router"
 import { FaGithub } from "react-icons/fa"
 import Header from "./Header"
@@ -21,7 +20,6 @@ export default function Intro() {
 
   return (
     <Box h="100vh">
-      {/* <Header /> */}
       <Box
         position={"fixed"}
         right={"10%"}
@@ -43,7 +41,6 @@ export default function Intro() {
             <FaGithub />
           </Button>
         </Link>
-
         <Button
           bg="green"
           height={"55px"}
@@ -64,8 +61,6 @@ export default function Intro() {
       >
         <Box
           maxWidth="700px"
-          // transition="all 10s ease-in-out"
-
           sx={{
             display: "inline-block",
             position: "relative",

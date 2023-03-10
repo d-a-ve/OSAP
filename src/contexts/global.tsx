@@ -99,7 +99,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
   const [suggestedPosts, setSuggestedPosts] = useState<any[]>([]);
   const [ranking, setRanking] = useState<any[] | null>(null)
   const [getAddress] = useLazyQuery(ADDRESS)
-
   const router = useRouter();
 
   // Function to fetchprofile from metadatahash
@@ -199,9 +198,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
         }
       }
 
-
-
-
     } catch (error: any) {
       /* This error code indicates that the chain has not been added to MetaMask */
       if (error.code === 4902) {
@@ -236,8 +232,8 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       }
     }
   };
-  // Check that a connected wallet is in the right network
 
+  // Check that a connected wallet is in the write network
   useEffect(() => {
     /* Check if the user connected with wallet */
     if (!(provider && address)) return;
@@ -249,7 +245,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       alert(error.message);
     }
   }, [provider, address]);
-
   // fetch accesstoken from local storage
   useEffect(() => {
     if (!accessToken) {
@@ -260,10 +255,11 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       }
 
     }
-  }, [accessToken]);
+  }, []);
 
   // Fetch primaryprofile of from connected wallet
   useEffect(() => {
+
     if (!(address && accessToken)) return;
     let query: any;
 
@@ -481,9 +477,9 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       }
 
       const tokenHolders: any = await Promise.all(promises);
-
+      console.log(tokenHolders)
       // Return the first 10 unique token holder addresses
-      return tokenHolders.slice(0, 10);;
+      return tokenHolders;
     }
 
     getFirst10TokenHolders().then(async (holders) => {
@@ -502,7 +498,8 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
         /* Set the essences */
         if (_essences.length > 0) {
           // just take one post from each user
-          setEssences([...essences, _essences[0]]);
+          console.log("mmmmmmmmm", _essences)
+          setEssences([...essences, ..._essences]);
         }
       }
 
@@ -516,15 +513,10 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
   //populate the user's feed with posts
   useEffect(() => {
     if (!postList) {
-      if (posts.length > 0) {
-        //The user has some posts already
-        fetchEssenceDetail(posts)
-      } else {
-        //Fetch some suggested posts
-        if (essences.length > 0) {
-          fetchEssenceDetail(essences)
-
-        }
+      //Fetch some suggested posts
+      if (essences.length > 0) {
+        console.log("esssss", essences);
+        fetchEssenceDetail(essences)
       }
     }
   },)

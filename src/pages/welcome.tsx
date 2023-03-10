@@ -1,4 +1,4 @@
-import { background, Box, Text } from "@chakra-ui/react"
+import { background, Box, Text, Link } from "@chakra-ui/react"
 import Intro from "@/components/LandingSections/Intro";
 import MarketingMsg from "@/components/LandingSections/MarketingMessage";
 import DesignProcess from "@/components/LandingSections/DesignProcess";
@@ -9,10 +9,7 @@ import UiDesigns from "@/components/LandingSections/UiDesigns";
 
 export default function LandingPage() {
   return (
-    <Box color="#414141" bg="black"
-
-
-    >
+    <Box color="#414141" bg="black" >
       <Box
         opacity={0.4}
         as="img"
@@ -20,21 +17,20 @@ export default function LandingPage() {
         position={"absolute"}
         h="100vh"
         w="100%"
-        // objectFit="cover"
+        objectFit="cover"
       />
       <Box>
         <Intro />
-        <Box  width={["85%", "85%", "85%"]} margin="0 auto">
+        <Box  width="85%" margin="0 auto">
         <MarketingMsg />
         <DesignProcess />
         <Prototype />
         <UiDesigns />
         <ProductOverview />
         <Box pb={16}>
-          <Text color="white" fontSize={["sm", "sm", "md"]}>Design and Development by Dave, Tinybird & Emmanuel</Text>
+          <Text color="white" fontSize={["sm", "sm", "md"]}>Design and Development by <Link href="">Tinybird</Link>, <Link href="">Dave</Link> & <Link href="">Emmanuel</Link></Text>
         </Box>
         </Box>
-        
       </Box>
     </Box>
   )
