@@ -2,9 +2,11 @@
 
 ## Designed to foster collaborative problem-solving and community building across Africa.
 
-OSAP (Open source African progress) is a gamified social media where individuals, organisations, and communities can meet, share ideas, and work towards solutions that are inspired by challenges peculiar in our world
+OSAP (Open source African progress) is a gamified social media where individuals, organisations, and communities can meet, share ideas, and work towards solutions that are inspired by challenges peculiar in our world.
 
-## Cyberconnect Integration
+[Try it out](https://osap-black.vercel.com)
+
+## Cyberconnect and web3 Integrations
 
 OSAP is built on top of ccprofiles created via cyberconnect for users. The profiles hold essense nfts which are posts that can be shared publicly, or conditionally with lit protocol.
 
@@ -18,7 +20,7 @@ OSAP is built on top of ccprofiles created via cyberconnect for users. The profi
                       (Cyberconnect
                       create-profile, twitter
                       auth, erc-721 )
-                    </span>{" "}
+                    </span>
                   </li>
                   <li>
                     Post about any pecuilar
@@ -63,7 +65,7 @@ OSAP is built on top of ccprofiles created via cyberconnect for users. The profi
                   </span>
                 </ul>
 
-## Tools
+## Frontend
 
 The web3 frontend is built on React, Nextjs, and ethers for contract interaction
 
@@ -83,51 +85,15 @@ With Lit we're able to allow users set access control for their post (essense NF
 
 [View Contract in Explorer](https://testnet.bscscan.com/address/0xDfA982cB1A5bDa0ad62dFfd416bABBfab02D6ba8)
 
-## Inspiration
-
-_..._
-
-## Design Architecture
-
-- ### Logo
-
-  _..._
-
-- ### Flow
-
-  _..._
-
-- ### Low Fidelity Wireframe
-  _..._
-
-## Screen Interactions
-
-_..._
-
-## Screenshots
-
-_..._
-
-<<<<<<< HEAD
-
-## What Next fo OSAP
-
-# _..._
-
-## What Next for OSAP
-
-_..._
-
-> > > > > > > a92e62b83bba188df81bc6d88a43519dacc8bfcc
-
 ## Contributors
 
 - D-a-ve
 - Tinybird
+- Emmanuel
 
 ## Links
 
-- [Website]()
+- [Website](https://osap-black.vercel.com)
 - [Youtube Demo]()
 - [Smart Contracts]()
 - [Express Server]()

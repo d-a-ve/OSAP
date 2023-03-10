@@ -99,7 +99,7 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
   const [suggestedPosts, setSuggestedPosts] = useState<any[]>([]);
   const [ranking, setRanking] = useState<any[] | null>(null)
   const [getAddress] = useLazyQuery(ADDRESS)
-const router = useRouter();
+  const router = useRouter();
 
   // Function to fetchprofile from metadatahash
   async function fetchProfile(cid: any) {
@@ -236,10 +236,7 @@ const router = useRouter();
     }
   };
 
-  //Connect Wallet
-  useEffect(() => {
-    connectWallet();
-  }, []);
+
 
   // Check that a connected wallet is in the write network
   useEffect(() => {
