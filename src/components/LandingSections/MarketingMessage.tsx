@@ -20,9 +20,8 @@ export default function MarketingMsg() {
         textAlign={["center", "left"]}
       >
         <Box
-          width={["90%", "40%"]}
+          w={["", "", "80%"]}
           margin="3rem auto"
-          fontWeight="500"
         >
           {/* <Text
 
@@ -33,9 +32,8 @@ export default function MarketingMsg() {
           </Text> */}
           <br />
           <Text
-            fontSize={["xl", "2xl"]}
+            fontSize={["xl", "2xl", "3xl"]}
             marginBottom="2rem"
-            lineHeight={1.7}
             color="white"
           >
             Unlock the full potential of
@@ -44,7 +42,7 @@ export default function MarketingMsg() {
             across the continent
           </Text>
           <Text
-            fontSize="sm"
+            fontSize={["md", "lg", "xl"]}
             marginBottom="2rem"
             color="white"
           >
@@ -71,10 +69,7 @@ export default function MarketingMsg() {
           justifyContent={["center", "flex-end"]}
           alignItems="center"
         >
-          <Box w="200px" h="200px" bg="green" />
-          <Box w="200px" h="200px" bg="yellow" />
-          <Box w="200px" h="200px" bg="yellow" />
-          <Box w="200px" h="200px" bg="yellow" />
+          {/* Product pictures here */}
         </Flex>
       </Flex>
     </Box>

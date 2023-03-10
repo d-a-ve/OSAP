@@ -4,6 +4,7 @@ import {
   Text,
   Image,
   Heading,
+  Link,
   Button,
 } from "@chakra-ui/react"
 
@@ -20,29 +21,34 @@ export default function Intro() {
 
   return (
     <Box h="100vh">
-      <Header />
+      {/* <Header /> */}
       <Box
         position={"fixed"}
         right={"10%"}
         top={"70px"}
       >
-        <Button
-          bg="gray"
-          height={"55px"}
-          color="white"
-          mr={3}
-          _hover={{
-            background: "gray",
-          }}
+        <Link
+          href="https://github.com/d-a-ve/OSAP"
+          isExternal
         >
-          <FaGithub />
-        </Button>
+          <Button
+            bg="gray"
+            height={"55px"}
+            color="white"
+            mr={3}
+            _hover={{
+              background: "gray",
+            }}
+          >
+            <FaGithub />
+          </Button>
+        </Link>
 
         <Button
           bg="green"
           height={"55px"}
           color="white"
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/Home")}
           _hover={{
             background: "green",
           }}
@@ -59,39 +65,21 @@ export default function Intro() {
         <Box
           maxWidth="700px"
           // transition="all 10s ease-in-out"
-          as="a"
-          href="#"
+
           sx={{
             display: "inline-block",
             position: "relative",
-            textDecoration: "none",
-            transition: "all 5s",
-            "&:hover": {
-              textDecoration: "none",
-              "&::after": {
-                content: '""',
-                display: "block",
-                height: "2px",
-                width: "100%",
-                backgroundImage:
-                  "linear-gradient(to right, black, green)",
-                position: "absolute",
-                bottom: "-4px",
-                left: 0,
-                transition: "width 10s ",
-              },
-            },
           }}
         >
           <Image
             src="OSAP.svg"
             alt="OSAP logo"
-            htmlWidth="100%"
-            htmlHeight="auto"
+            w={["70%", "70%", "80%", "90%"]}
+            mx="auto"
           />
           <Text
             fontWeight={900}
-            fontSize={"2xl"}
+            fontSize={["lg", "lg", "2xl"]}
             textAlign={"center"}
             color="black"
           >

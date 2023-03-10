@@ -9,7 +9,7 @@ import React from "react"
 
 export default function ProductOverview() {
   return (
-    <Box pb={12}>
+    <Box pb={6}>
       <Box
         margin={{
           base: "2rem auto",
@@ -27,9 +27,7 @@ export default function ProductOverview() {
             bg="gray.400"
             marginBottom={{ base: "2rem", lg: 0 }}
           />
-          <Box
-            width={{ base: "100%", lg: "50%" }}
-          >
+          <Box width={["", "", "80%", "70%"]}>
             <Text
               fontWeight="700"
               fontSize={{ base: "lg", lg: "md" }}
@@ -68,7 +66,7 @@ export default function ProductOverview() {
                   <li>
                     Post about any pecuilar
                     challenge or theme for
-                    discussion
+                    discussion{" "}
                     <span
                       style={{ color: "yellow" }}
                     >
@@ -79,7 +77,7 @@ export default function ProductOverview() {
                   <li>
                     Allow public (OSAP members),
                     or only subscribers to discuss
-                    contibute solutions &nbsp;
+                    contibute solutions &nbsp;{" "}
                     <span
                       style={{ color: "yellow" }}
                     >
@@ -88,7 +86,7 @@ export default function ProductOverview() {
                     </span>
                   </li>
                   <li>
-                    Members can vote on solutions
+                    Members can vote on solutions{" "}
                     <span
                       style={{ color: "yellow" }}
                     >
@@ -99,7 +97,7 @@ export default function ProductOverview() {
                     Contributors are challenged to
                     top the voting scoreboard,
                     perhaps to win weekly prizes
-                    and sbt badges
+                    and sbt badges{" "}
                   </li>
                   <span
                     style={{ color: "yellow" }}
@@ -118,7 +116,6 @@ export default function ProductOverview() {
         as="img"
         src="/live.png"
         w="100%"
-        h="auto"
         bg="gray.400"
       />
     </Box>

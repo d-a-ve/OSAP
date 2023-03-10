@@ -9,7 +9,7 @@ import React from "react"
 
 export default function UiDesigns() {
   return (
-    <Box>
+    <Box color="white">
       <Box>
         <Flex
           direction="column"
