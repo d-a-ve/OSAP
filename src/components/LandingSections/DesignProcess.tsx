@@ -24,7 +24,7 @@ const subheadingStyles = {
 }
 
 const textStyles = {
-  fontSize: { base: "sm", md: "md" },
+  fontSize: { base: "md", md: "lg" },
   fontWeight: "500",
   marginBottom: "2rem",
 }
@@ -42,7 +42,7 @@ export default function DesignProcess() {
         }}
       >
         <Image
-          src="src/assets/designProcess.jpg"
+          src="/design process.png"
           alt="Design Process"
           {...imageStyles}
         />
@@ -51,13 +51,15 @@ export default function DesignProcess() {
         direction={{ base: "column", md: "row" }}
         justifyContent="center"
         alignItems="center"
-        gap={{ base: "3rem", md: "7" }}
+        // gap={{ base: "3rem", md: "7" }}
+        mt={20}
       >
         <Box flex="1">
           <Image
             src="src/assets/Brainstorm.jpg"
             alt="Brainstorming Design"
             {...imageStyles}
+            w="100%"
           />
         </Box>
         <Box
@@ -66,7 +68,12 @@ export default function DesignProcess() {
           color="white"
         >
           <Text
-            marginBottom="1.5rem"
+            marginBottom={[
+              "1.5rem",
+              "",
+              "",
+              "1rem",
+            ]}
             textAlign={{
               base: "center",
               md: "left",
@@ -80,7 +87,7 @@ export default function DesignProcess() {
             our country banned twitter for nearly
             6 months
           </Text>
-          <Text {...textStyles} opacity="0.8">
+          <Text {...textStyles}>
             One of the main purpose of the
             creation of decentralized apps is to
             give the masses the power to control
@@ -104,6 +111,7 @@ export default function DesignProcess() {
         color={"white"}
       >
         <Text
+          flex="1"
           textAlign={{
             base: "center",
             md: "left",
@@ -114,15 +122,10 @@ export default function DesignProcess() {
           INFORMATION ARCHITECTURE
         </Text>
         <Text
-          width="50%"
-          fontSize={{ base: "lg", md: "md" }}
-          marginTop={{
-            base: "10rem",
-            md: "18rem",
-          }}
-          paddingBottom="10rem"
-          fontWeight="500"
-          paddingRight={{ base: 0, md: 10 }}
+          flex="1"
+          width={["100%", "50%"]}
+          fontSize={{ base: "md", md: "lg" }}
+          mt={[7]}
         >
           By merging core functions of creating
           ccpprofile, receiving a custom
