@@ -4,7 +4,7 @@
 
 OSAP (Open source African progress) is a gamified social media where individuals, organisations, and communities can meet, share ideas, and work towards solutions that are inspired by challenges peculiar in our world.
 
-[Try it out](https://osap-black.vercel.com)
+[Try it out](https://osap-black.vercel.app)
 
 ## Cyberconnect and web3 Integrations
 
@@ -87,14 +87,14 @@ With Lit we're able to allow users set access control for their post (essense NF
 
 ## Contributors
 
-- D-a-ve
-- Tinybird
-- Emmanuel
+- [D-a-ve](https://github.com/d-a-ve)
+- [Tinybird](https://github.com/acgodson)
+- [Emmanuel](https://github.com/Richard-Emmanuel)
 
 ## Links
 
-- [Website](https://osap-black.vercel.com)
-- [Youtube Demo]()
+- [Website](https://osap-black.vercel.app)
+- [Youtube Demo](https://youtu.be/Z-LpX4GBVDw)
 - [Smart Contracts]()
 - [Express Server]()
 
