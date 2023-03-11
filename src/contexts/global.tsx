@@ -22,7 +22,6 @@ import { extractCID, timeout } from "../utils/helpers/functions";
 import { useCancellableQuery } from "../hooks/useCancellableQuery";
 import OSAP from "../utils/abi/OSAP.json"
 import { useLazyQuery } from "@apollo/client";
-import { connected } from "process";
 import { useRouter } from "next/router";
 
 
@@ -100,8 +99,8 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
   const [ranking, setRanking] = useState<any[] | null>(null)
   const [getAddress] = useLazyQuery(ADDRESS)
   const router = useRouter();
-
-  // Function to fetchprofile from metadatahash
+  let query: any;
+  // Function to any fetchprofile from metadatahash
   async function fetchProfile(cid: any) {
     const res = await fetch(
       `https://ipfs.infura.io:5001/api/v0/cat?arg=${cid}`,
@@ -233,6 +232,32 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
     }
   };
 
+  //Function to fetch default profile from connected wallet
+  const fetchDefaultProfile = async () => {
+    try {
+      /* Fetch primary profile */
+      query = useCancellableQuery({
+        query: PRIMARY_PROFILE,
+        variables: {
+          address: address,
+          // chainID: CHAIN_ID,
+          myAddress: address,
+        },
+      });
+      const res = await query;
+
+      /* Get the primary profile */
+      const primaryProfile = res?.data?.address?.wallet?.primaryProfile;
+      console.log(primaryProfile);
+
+      /* Set the primary profile */
+      setPrimaryProfile(primaryProfile);
+    } catch (error) {
+      /* Display error message */
+      console.error(error);
+    }
+  };
+
   // Check that a connected wallet is in the write network
   useEffect(() => {
     /* Check if the user connected with wallet */
@@ -245,54 +270,34 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
       alert(error.message);
     }
   }, [provider, address]);
+
+
+
   // fetch accesstoken from local storage
   useEffect(() => {
-    if (!accessToken) {
-      const xx = localStorage.getItem("accessToken");
-      if (xx) {
+    const xx: null | string = localStorage.getItem("accessToken");
+    if (xx) {
+      if (!accessToken) {
         //   console.log("my access Token", xx);
         setAccessToken(xx);
       }
-
     }
-  }, []);
+  }, [accessToken]);
+
 
   // Fetch primaryprofile of from connected wallet
   useEffect(() => {
-
     if (!(address && accessToken)) return;
-    let query: any;
 
-    const fetchProfile = async () => {
-      try {
-        /* Fetch primary profile */
-        query = useCancellableQuery({
-          query: PRIMARY_PROFILE,
-          variables: {
-            address: address,
-            // chainID: CHAIN_ID,
-            myAddress: address,
-          },
-        });
-        const res = await query;
-
-        /* Get the primary profile */
-        const primaryProfile = res?.data?.address?.wallet?.primaryProfile;
-        console.log(primaryProfile);
-
-        /* Set the primary profile */
-        setPrimaryProfile(primaryProfile);
-      } catch (error) {
-        /* Display error message */
-        console.error(error);
+    if (!primaryProfile) {
+      fetchDefaultProfile();
+    }
+    return () => {
+      if (query) {
+        query.cancel();
       }
     };
-    fetchProfile();
-
-    return () => {
-      query.cancel();
-    };
-  }, [address, accessToken]);
+  }, [address, accessToken, primaryProfile, fetchDefaultProfile, query]);
 
 
   // Fetch all  profiles associated with connected wallet
@@ -449,7 +454,6 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
 
   //Fetch suggested posts for empty feeds
   useEffect(() => {
-
     // Function to get first 10 members of OSAP for suggested contents
     async function getFirst10TokenHolders() {
 
@@ -483,7 +487,9 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
     }
 
     getFirst10TokenHolders().then(async (holders) => {
+      let man = []
       for (let i = 0; i < holders.length; i++) {
+
         const res = await getAddress({
           variables: {
             address: holders[i],
@@ -499,8 +505,9 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
         if (_essences.length > 0) {
           // just take one post from each user
           console.log("mmmmmmmmm", _essences)
-          setEssences([...essences, ..._essences]);
+          man.push(..._essences)
         }
+        setEssences(man);
       }
 
 
@@ -596,6 +603,11 @@ export const GlobalContextProvider = ({ children }: { children: ReactNode }) => 
   //     router.push("/home")
   //   }
   // }, [address]);
+
+  useEffect(() => {
+    connectWallet()
+  }, [])
+
 
 
 

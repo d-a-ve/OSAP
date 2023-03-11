@@ -3,9 +3,13 @@ import { GlobalContextProvider } from '@/contexts/global'
 import { ModalContextProvider } from '@/contexts/modal'
 import { apolloClient } from '@/utils/apollo'
 import { ApolloProvider } from '@apollo/client'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, Flex } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
 import { createReactClient, LivepeerConfig, studioProvider, ThemeConfig } from "@livepeer/react";
+import LeftPanel from "@/components/homeLeftPanel/LeftPanel";
+import RightPanel from "@/components/homeRightPanel/RightPanel";
+import Layout from "@/components/Layout";
+import { useRouter } from "next/router";
 
 
 const livepeerClient = createReactClient({
@@ -26,13 +30,24 @@ const theme: ThemeConfig = {
 
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+
+
   return (
     <ApolloProvider client={apolloClient}>
       <GlobalContextProvider>
         <ModalContextProvider>
-
           <ChakraProvider>        <LivepeerConfig client={livepeerClient} theme={theme}>
-            <Component {...pageProps} />
+            {
+              router.pathname !== '/' &&     router.pathname !== '/welcome'  ?
+                <Layout sides={true}>
+                  <Component {...pageProps} />
+                </Layout> :
+
+                <Component {...pageProps} />
+            }
+
           </LivepeerConfig>
           </ChakraProvider>
 
@@ -41,7 +56,6 @@ export default function App({ Component, pageProps }: AppProps) {
     </ApolloProvider>
   )
 
-
-
-
 }
+
+

@@ -1,6 +1,6 @@
 
 import { Dispatch, SetStateAction } from "react";
-const fairsaveUploadService = "http://localhost:4040/cid/";
+const fairsaveUploadService = "https://chaincraftnode-production.up.railway.app/cid/";
 
 export function uploadFairsaveImage({
 
