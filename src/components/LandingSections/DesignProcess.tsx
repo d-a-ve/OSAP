@@ -134,8 +134,8 @@ export default function DesignProcess() {
           shared on variety of topics. There is
           also a sign in with twitter that should
           reduce the process of filling profile
-          infomration and possibly link ccprofile
-          with new account
+          information and possibly link ccprofile
+          with new account.
         </Text>
       </Flex>
       <Box
