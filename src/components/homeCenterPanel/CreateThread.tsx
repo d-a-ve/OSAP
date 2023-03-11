@@ -94,12 +94,12 @@ export default function CreateThread() {
   }, [postInput.content, handleModal])
 
   function handlePost() {
-    toast({
-      title: "Disabled by Admin, please try again later!",
-      status: "info",
-      duration: 2000,
-    });
-    return;
+    // toast({
+    //   title: "Disabled by Admin, please try again later!",
+    //   status: "info",
+    //   duration: 2000,
+    // });
+    // return;
     handleModal("post", "Profile was created!")
   }
 
